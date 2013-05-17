@@ -1,0 +1,501 @@
+" Author: José Luis García <jl.garhdez@gmail.com>
+" Inspiration: Steve Losh, Scroolose, dkpw, tpope...
+
+" CONFIGURACIÓN BÁSICA ----------------------------------------------------- {{{
+
+" Basics ------------------------------------------------------------------- {{{
+let mapleader = ","
+set number
+nnoremap H 0
+nnoremap L $
+filetype on
+filetype plugin on
+set mouse=a
+set comments=sr:/*,mb:*,ex:*/
+set smartindent
+set encoding=utf-8
+set cursorline
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set noexpandtab
+set cindent
+set autoindent
+set encoding=utf-8
+set modelines=0
+set showmode
+set showcmd
+set visualbell
+set ttyfast
+set ruler
+set backspace=indent,eol,start
+set laststatus=2
+set history=1000
+"set undofile
+"set undoreload=10000
+set list
+set listchars=tab:·\ ,eol:¬,extends:❯,precedes:❮
+set shell=/bin/bash
+set lazyredraw
+set matchtime=3
+set showbreak=↪
+set splitbelow
+set splitright
+set fillchars=diff:⣿,vert:│
+set title
+set wrap
+set textwidth=80
+set formatoptions=qrn1
+au VimResized * exe "normal! \<c-w>="
+" }}}
+" Folds -------------------------------------------------------------------- {{{
+set foldlevelstart=99
+set foldmethod=marker
+
+" From Steve Losh
+function! MyFoldText() " {{{
+    let line = getline(v:foldstart)
+
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+endfunction " }}}
+
+set foldtext=MyFoldText()
+
+set nowrap
+
+" }}}
+" Appearance --------------------------------------------------------------- {{{
+
+if has("gui_running")
+    set fuoptions=maxvert,maxhorz
+	colorscheme Molokai
+	map <F1> :set invfu<CR>
+	set colorcolumn=+1
+	set guioptions-=egt
+	set guioptions=LR
+	set guioptions-=LR
+else
+	colorscheme badwolf
+endif
+
+set guifont=Monaco:h12
+set t_Co=256
+
+syntax on
+
+" }}}
+" Wildmenu ----------------------------------------------------------------- {{{
+set wildmenu
+" }}}
+" Backup ------------------------------------------------------------------- {{{
+" backup to ~/.tmp 
+set backup 
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+set backupskip=/tmp/*,/private/tmp/* 
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+set writebackup
+" }}}
+
+" }}}
+" PLUGIN STUFF ------------------------------------------------------------- {{{
+
+" Pathogen ----------------------------------------------------------------- {{{
+call pathogen#infect()
+" }}}
+" Nerdtree ----------------------------------------------------------------- {{{
+map <F2> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.pyc$']
+let NERDTreeMapActivateNode='<space>'
+"}}}
+" Syntastic ---------------------------------------------------------------- {{{
+
+function! s:SaveAll()
+	w | :Error
+endfunction
+
+command! -bar -narg=0 W call s:SaveAll()
+
+if has('statusline')
+	set laststatus=2
+	" Broken down into easily includeable segments
+	set statusline=%<%f\    " Filename
+	set statusline+=%w%h%m%r " Options
+	set statusline+=%{fugitive#statusline()} "  Git Hotness
+	set statusline+=\ [%{&ff}/%Y]            " filetype
+	set statusline+=\ [%{getcwd()}]          " current dir
+	set statusline+=%#warningmsg#
+	set statusline+=%{SyntasticStatuslineFlag()}
+	set statusline+=%*
+	let g:syntastic_enable_signs=1
+	set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+endif
+
+let g:syntastic_phpcs_disable = 0
+let g:syntastic_php_checkers=['php']
+let g:syntastic_css_checkers=['csslint']
+let g:syntastic_javascript_checkers=['jslint']
+
+nnoremap <f6> :Errors<cr>
+
+" }}}
+" Tagbar ------------------------------------------------------------------- {{{
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_phpctags_bin='~/phpctags/phpctags'
+" }}}
+" Gundo -------------------------------------------------------------------- {{{
+nmap <F5> :GundoToggle<CR>
+" }}}
+" Refucktor ---------------------------------------------------------------- {{{
+vnoremap <leader>rv :call ExtractVariable()<cr>
+vnoremap <leader>rm :call ExtractToMethod()<cr>
+"}}}
+" vim-symfony -------------------------------------------------------------- {{{
+let g:symfony_app_console_caller= "php"
+let g:symfony_app_console_path= "app/console"
+" }}}
+
+" }}}
+" MAPPINGS ----------------------------------------------------------------- {{{
+" folding mappings --------------------------------------------------------- {{{
+nnoremap <Space> za
+vnoremap <Space> za
+" }}}
+" movement mappings -------------------------------------------------------- {{{
+
+" Avanzar o retroceder 10 lineas
+inoremap ñj <Esc>10ji
+inoremap ñk <Esc>10ki
+noremap ñj 10j
+noremap ñk 10k
+
+map <tab> %
+
+" Borramos hasta el final de la linea
+nnoremap D d$
+
+" Mantenemos el resultado en el centro al buscar
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" <<desmapeamos>> las flechas
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+" remapeamos las flechas para cambiar de buffer 
+nmap <silent> <Up> :wincmd k<CR>
+nmap <silent> <Down> :wincmd j<CR>
+nmap <silent> <Left> :wincmd h<CR>
+nmap <silent> <Right> :wincmd l<CR>
+
+"}}}
+" editor mappings ---------------------------------------------------------- {{{
+
+" Mapeos para teclado finés: 
+inoremap € $
+nnoremap € $
+vnoremap € $
+inoremap <D-å> [
+inoremap ¨ ]
+inoremap <D-ä> {
+inoremap <D-'> }
+inoremap ö ñ
+
+" Mapeos para autocompletado de paréntesis y llaves
+inoremap { {}<left>
+inoremap {{ {
+inoremap {} {}
+inoremap [ []<esc>i
+inoremap [[ [
+inoremap [] []
+inoremap ( ()<left>
+inoremap (( (
+inoremap () ()
+inoremap " ""<left>
+inoremap "" ""
+inoremap ' ''<left>
+inoremap '' ''
+
+" Autocompletion
+inoremap <c-space> <c-x><c-o>
+
+" desmapeamos la ayuda de VIM del <f1>
+inoremap <F1> <nop>
+" permite ejecutar w!! para guardar ficheros de sólo lectura
+cmap w!! w !sudo tee % >/dev/null
+
+" volver a seleccionar despues de indentar
+vnoremap < <gv
+vnoremap > >gv
+
+" Evitamos typos:
+nnoremap ; :
+command! W write
+
+" Search highlight toggle
+nnoremap <F4> :set hlsearch! hlsearch?<CR>
+
+" Pastetoggle
+set pastetoggle=<F3>
+
+" Formatea todo el archivo
+nnoremap <leader>fef mtgg=G't
+
+" Cambia a uppercase una cadena ( por ejemplo, constantes )
+nnoremap <C-u> gUiw
+inoremap <C-u> gUiwea
+
+"busca la palabra resaltada
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+
+"busca la palabra resaltada hacia detrás
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+
+" }}}
+" leader mappings ---------------------------------------------------------- {{{
+
+" Eliminar los espacios en blanco al final de linea
+nnoremap <leader>w mz:%s/\s\+$//<cr>:let @/=''<cr>`z
+
+" Gist
+vnoremap <leader>ug :w !gist -p \| pbcopy<cr>
+
+" Abrimos nuestro archivo VIMRC.
+map <leader>vrc <esc>:vnew<cr>:e ~/.vimrc<cr>
+
+" }}}
+" Typos -------------------------------------------------------------------- {{{
+"Shitty finnish layout, DIE!
+inoremap <D-º> \
+" }}}
+" }}}
+" LANGUAGE SPECIFIC -------------------------------------------------------- {{{
+
+" PHP ---------------------------------------------------------------------- {{{
+augroup ft_php
+	au!
+	nnoremap <leader>P :!open http://www.php.net/<cword><cr>
+	au FileType php setlocal foldmethod=syntax
+	au FileType php setlocal expandtab
+	au FileType php setlocal tabstop=4
+	au FileType php setlocal keywordprg=pman
+	au FileType php inoremap <C-o> :set paste<CR>:exe PhpDoc()<CR>:set nopaste<CR>i
+augroup END
+" }}}
+" HTML --------------------------------------------------------------------- {{{
+augroup ft_html
+	au!
+	au FileType xhtml,html,htm so ~/.vim/ftplugin/html_autoclosetag.vim
+augroup END
+" }}}
+" XML ---------------------------------------------------------------------- {{{
+augroup ft_html
+	au!
+	au FileType xml so ~/.vim/ftplugin/html_autoclosetag.vim
+augroup END
+" }}}
+" JAVASCRIPT --------------------------------------------------------------- {{{
+augroup ft_js
+	au!
+	au Filetype javascript setlocal foldmethod=marker
+	au Filetype javascript setlocal foldmarker={,}
+augroup END
+"}}}
+" PYTHON ------------------------------------------------------------------- {{{
+augroup ft_py
+	au!
+
+augroup END
+" }}}
+" CSS ---------------------------------------------------------------------- {{{
+
+" Not mine, from Steve Losh, again
+augroup ft_css
+    au!
+
+    au BufNewFile,BufRead *.less setlocal filetype=less
+
+    au Filetype less,css setlocal foldmethod=marker
+    au Filetype less,css setlocal foldmarker={,}
+    au Filetype less,css setlocal omnifunc=csscomplete#CompleteCSS
+    au Filetype less,css setlocal iskeyword+=-
+
+    " Use <leader>S to sort properties.  Turns this:
+    "
+    "     p {
+    "         width: 200px;
+    "         height: 100px;
+    "         background: red;
+    "
+    "         ...
+    "     }
+    "
+    " into this:
+
+    "     p {
+    "         background: red;
+    "         height: 100px;
+    "         width: 200px;
+    "
+    "         ...
+    "     }
+    au BufNewFile,BufRead *.less,*.css nnoremap <buffer> <localleader>S ?{<CR>jV/\v^\s*\}?$<CR>k:sort<CR>:noh<CR>
+
+    " Make {<cr> insert a pair of brackets in such a way that the cursor is correctly
+    " positioned inside of them AND the following code doesn't get unfolded.
+    au BufNewFile,BufRead *.less,*.css inoremap <buffer> {<cr> {}<left><cr><space><space><space><space>.<cr><esc>kA<bs>
+augroup END
+" }}}
+" VIM ---------------------------------------------------------------------- {{{
+augroup ft_vim
+	au!
+
+augroup END
+" }}}
+" VAGRANT ------------------------------------------------------------------ {{{
+
+augroup ft_vagrant
+    au!
+    au BufRead,BufNewFile Vagrantfile set ft=ruby
+augroup END
+
+" }}}
+" MAN ---------------------------------------------------------------------- {{{
+augroup ft_man
+	au!
+	au FileType man setlocal foldmethod=indent
+augroup END
+" }}}
+" MARKDOWN ----------------------------------------------------------------- {{{
+augroup ft_markdown
+	au!
+
+	au BufNewFile,BufRead *.md setlocal filetype=markdown foldlevel=1
+
+	" Use <localleader>1/2/3 to add headings.
+	au Filetype markdown nnoremap <buffer> <leader>1 yypVr=:redraw<cr>
+	au Filetype markdown nnoremap <buffer> <leader>2 yypVr-:redraw<cr>
+	au Filetype markdown nnoremap <buffer> <leader>3 mzI###<ESC>
+augroup END
+" }}}
+" COFFEESCRIPT ------------------------------------------------------------- {{{
+augroup ft_coffeescript
+	au!
+	au FileType coffee setlocal expandtab
+	au FileType coffee setlocal tabstop=2
+	au FileType coffee command! CoffeeGenerate call CoffeeGenerate()
+	au FileType coffee set shiftwidth=2
+	au FileType coffee set autoread
+	au FileType coffee set softtabstop=2
+	au BufNewFile,BufReadPost *.coffee setl foldmethod=indent
+	au BufWritePost *.coffee silent CoffeeGenerate
+augroup END
+" }}}
+" TWIG---------------------------------------------------------------------- {{{
+
+augroup ft_twig
+	au!
+	au BufNewFile,BufRead *.twig setlocal filetype=jinja foldlevel=1
+augroup END
+
+" }}}
+
+" }}}
+" FUNCTIONS ---------------------------------------------------------------- {{{
+
+" Only works in PHP... And sometimes
+function! s:CreateGetterSetter() " {{{
+
+	let line = getline(".")
+
+	let getterStart = "()\n{\nreturn $this->"
+	let setterStart = "($nombre)\n{\nthis->"
+
+	let nombreDelMetodo = substitute(substitute(substitute(substitute(substitute(substitute(line, "[\t*]public \\$", "", ""), "[\t*]protected ", "", ""), "[\t*]private ", "", ""), "\\$", "", ""), ";", "", ""), "[=.*]", "", "")
+	let nombreDelMetodo = split(nombreDelMetodo)[0]
+
+	exec "normal! opublic function get_" . nombreDelMetodo . getterStart . nombreDelMetodo . ";\n}\n"
+	exec "normal! opublic function set_" . nombreDelMetodo . setterStart . nombreDelMetodo  . " = $nombre;\n}\n"
+
+endfunction
+
+" Creamos el comando
+command! Gs call s:CreateGetterSetter()
+	"
+" Mapeamos el comando a <leader>gs
+nnoremap <leader>gs :Gs<cr>
+
+" }}}
+
+" From: Jeff Kreeftmeijer
+function! NumberToggle() " {{{
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
+" }}}
+
+" Inspiration: Moises Gallego
+" This function prints <pre>var_dump($name)</pre> of the var name you input.
+function! JeanClaude() " {{{
+	let path = "echo 'var_dump() en " . @% . "';"
+	let openpre = "echo '<pre>';"
+	let closepre = "echo '</pre>';"
+	let nombre = inputdialog("nombre de la variable: ")
+	exec "normal! O" . path  . "\n" . openpre . "\nvar_dump($" . nombre . ");\n" . closepre
+endfunction
+command! -bar -narg=0 Jeanclaude call JeanClaude()
+" }}}
+
+function! HighlightAnnotations() " {{{
+  syn keyword phpKeyword contained namespace use
+endfunction
+
+autocmd Syntax * call HighlightAnnotations() " }}}
+
+function! ToggleColorscheme() " {{{
+	if (g:colors_name == "solarized")
+		set background=dark
+		colorscheme Molokai
+	else
+		set background=light
+		colorscheme solarized
+	endif
+endfunction 
+nnoremap <f7> :call ToggleColorscheme()<cr>
+"}}} 
+
+" This will only work if we are on the root of a dir containing coffee/ and js/
+" subdirectories
+function! CoffeeGenerate() " {{{
+	let shell = "coffee --compile --output js/ coffee/"
+	call system(shell)
+endfunction "}}}
+" }}}
