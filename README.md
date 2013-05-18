@@ -1,4 +1,4 @@
-Awesomiest dotfiles repo ever
+Awesomest dotfiles repo ever
 =============================
 
 Well, probably it's not...
