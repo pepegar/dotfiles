@@ -1,3 +1,4 @@
+#! /bin/sh
 echo "initializing submodules"
 git submodule init
 
