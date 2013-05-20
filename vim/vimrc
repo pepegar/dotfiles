@@ -88,7 +88,7 @@ else
 	colorscheme badwolf
 endif
 
-set guifont=Monaco:h12
+set guifont=Menlo\ Regular\ for\ Powerline:h12
 set t_Co=256
 
 syntax on
