@@ -4,4 +4,5 @@ function vim; mvim -v $argv; end
 function v; mvim -v $argv; end
 function :q; exit; end
 
-set EDITOR vim
+function ev: mvim ~/.vimrc; end
+function ef: mvim ~/.config/fish/config.fish; end
