@@ -5,7 +5,7 @@
 
 " Basics ------------------------------------------------------------------- {{{
 let mapleader = ","
-set number
+set relativenumber
 nnoremap H 0
 nnoremap L $
 filetype on
