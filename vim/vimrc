@@ -163,6 +163,9 @@ vnoremap <leader>rm :call ExtractToMethod()<cr>
 let g:symfony_app_console_caller= "php"
 let g:symfony_app_console_path= "app/console"
 " }}}
+" ctrlp-vim ---------------------------------------------------------------- {{{
+let g:ctrlp_show_hidden = 1
+" }}}
 
 " }}}
 " MAPPINGS ----------------------------------------------------------------- {{{
