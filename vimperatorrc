@@ -1,0 +1,7 @@
+" tab navigation
+nnoremap ( :tabp<cr>
+nnoremap ) :tabn<cr>
+
+" Faster movement
+nnoremap j 3j
+nnoremap k 3k
