@@ -1,8 +1,6 @@
-<<<<<<< HEAD
 set PATH /usr/bin /bin /usr/sbin /sbin /usr/local/bin /usr/local/share/npm/bin /usr/X11R6/bin /Users/Pepe/phpctags /usr/local/Cellar/mysql/5.5.27/bin /usr/local/php5/bin $PATH
 
 function gvim; mvim $argv; end)
-=======
 function m; mvim $argv; end
 function g; git $argv; end
 function vim; mvim -v $argv; end
@@ -28,4 +26,3 @@ prepend_to_path "/usr/sbin"
 prepend_to_path "/sbin"
 prepend_to_path "/usr/local/bin"
 prepend_to_path "/usr/"
->>>>>>> 10ca33f2c45d5497ccf25dc3bf17ce0c2c4156c2
