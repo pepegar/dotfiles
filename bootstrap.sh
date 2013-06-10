@@ -9,5 +9,6 @@ echo "creating symlinks"
 ln -s ~/dotfiles/vim ~/.vim
 ln -s ~/dotfiles/vim/vimrc ~/.vimrc
 ln -s ~/dotfiles/config ~/.config
+ln -s ~/dotfiles/vimperator ~/.vimperator
 ln -s ~/dotfiles/vimperatorrc ~/.vimperatorrc
 ln -s ~/dotfiles/gitconfig ~/.gitconfig
