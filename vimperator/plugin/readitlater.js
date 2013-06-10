@@ -1,7 +1,7 @@
 /*
  * readitlater.js
  * read it later apiをたたく
- * API Reffernce : http://readitlaterlist.com/api/docs/
+ * API Reffernce : http://getpocket.com/api/docs/
  * TODO:ADDにbufferからのリストを入れられるように
 */
 
@@ -23,7 +23,7 @@ let PLUGIN_INFO = xml`
 
 	注意2.
 		API Key を使うので
-		http://readitlaterlist.com/api/signup/
+		http://getpocket.com/api/signup/
 		から自分のAPI Keyを取得して
 		rcファイルに let g:readitlater_api_key = "api key" と書いておいた方が良いと思います。
 		デフォルトではあらかじめ私が取得したAPI Key使ってますが、一定時間内のリクエスト数などに制限があるみたいです。
@@ -248,7 +248,7 @@ let PLUGIN_INFO = xml`
 		text : function(){ // {{{
 
 		let req = new libly.Request(
-			"https://text.readitlaterlist.com/v2/text" , // url
+			"https://text.getpocket.com/v2/text" , // url
 			null, // headers
 			{ // options
 			asynchronous:true,
@@ -278,13 +278,13 @@ let PLUGIN_INFO = xml`
 		}, // }}}
 
 		get : function(state, callback){ // {{{
-		// document => http://readitlaterlist.com/api/docs#get
+		// document => http://getpocket.com/api/docs#get
 
 		let manager = Components.classes["@mozilla.org/login-manager;1"].getService(Components.interfaces.nsILoginManager);
 		let logins = manager.findLogins({},"http://getpocket.com","",null);
 
 		let req = new libly.Request(
-			"https://readitlaterlist.com/v2/get" , // url
+			"https://getpocket.com/v2/get" , // url
 			null, // headers
 			{ // options
 			asynchronous:true,
@@ -317,9 +317,9 @@ let PLUGIN_INFO = xml`
 		add : function(url,title,callback){ // {{{
 
 		let manager = Components.classes["@mozilla.org/login-manager;1"].getService(Components.interfaces.nsILoginManager);
-		let logins = manager.findLogins({},"http://readitlaterlist.com","",null);
+		let logins = manager.findLogins({},"http://getpocket.com","",null);
 		let req = new libly.Request(
-			"https://readitlaterlist.com/v2/add" , // url
+			"https://getpocket.com/v2/add" , // url
 			null, // headers
 			{ // options
 			asynchronous:true,
@@ -347,10 +347,10 @@ let PLUGIN_INFO = xml`
 		}, // }}}
 
 		send : function(urls, callback) { //{{{
-		// http://readitlaterlist.com/api/docs/#send
+		// http://getpocket.com/api/docs/#send
 
 		let manager = Components.classes["@mozilla.org/login-manager;1"].getService(Components.interfaces.nsILoginManager);
-		let logins = manager.findLogins({},"http://readitlaterlist.com","",null);
+		let logins = manager.findLogins({},"http://getpocket.com","",null);
 
 		function make_read_list(args){
 			let o = {};
@@ -361,7 +361,7 @@ let PLUGIN_INFO = xml`
 		}
 
 		let req = new libly.Request(
-			"https://readitlaterlist.com/v2/send" , // url
+			"https://getpocket.com/v2/send" , // url
 			null, // headers
 			{ // options
 				asynchronous:true,
@@ -392,9 +392,9 @@ let PLUGIN_INFO = xml`
 		stats : function(){ // {{{
 
 		let manager = Components.classes["@mozilla.org/login-manager;1"].getService(Components.interfaces.nsILoginManager);
-		let logins = manager.findLogins({},"http://readitlaterlist.com","",null);
+		let logins = manager.findLogins({},"http://getpocket.com","",null);
 		let req = new libly.Request(
-			"https://readitlaterlist.com/v2/stats" , // url
+			"https://getpocket.com/v2/stats" , // url
 			null, // headers
 			{ // options
 				asynchronous:true,
@@ -438,7 +438,7 @@ let PLUGIN_INFO = xml`
 		apiTest : function(){ // {{{
 
 		let req = new libly.Request(
-			"https://readitlaterlist.com/v2/api" , // url
+			"https://getpocket.com/v2/api" , // url
 			null, // headers
 			{ // options
 			asynchronous:true,
