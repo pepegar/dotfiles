@@ -18,7 +18,7 @@ set cursorline
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-set noexpandtab
+set expandtab
 set cindent
 set autoindent
 set encoding=utf-8
@@ -302,7 +302,7 @@ augroup ft_php
 	au!
 	nnoremap <leader>P :!open http://www.php.net/<cword><cr>
 	au FileType php setlocal foldmethod=syntax
-	au FileType php setlocal expandtab
+	au FileType php setlocal noexpandtab
 	au FileType php setlocal tabstop=4
 	au FileType php setlocal keywordprg=pman
 	au FileType php inoremap <C-o> :set paste<CR>:exe PhpDoc()<CR>:set nopaste<CR>i
