@@ -157,13 +157,13 @@ snippet wh
 snippet do
 	do {
 		${2:// code... }
-	} while (${1:/* condition */});
+	} while ( ${1:/* condition */} );
 snippet if
-	if (${1:/* condition */}) {
+	if ( ${1:/* condition */} ) {
 		${2:// code...}
 	}
 snippet ife
-	if (${1:/* condition */}) {
+	if ( ${1:/* condition */} ) {
 		${2:// code...}
 	} else {
 		${3:// code...}
@@ -174,14 +174,14 @@ snippet else
 		${1:// code...}
 	}
 snippet elseif
-	elseif (${1:/* condition */}) {
+	elseif ( ${1:/* condition */} ) {
 		${2:// code...}
 	}
 # Tertiary conditional
 snippet t
-	$${1:retVal} = (${2:condition}) ? ${3:a} : ${4:b};${5}
+	$${1:retVal} = ( ${2:condition} ) ? ${3:a} : ${4:b};${5}
 snippet switch
-	switch ($${1:variable}) 
+	switch ( $${1:variable} ) 
 	{
 		case '${2:value}':
 			${3:// code...}
@@ -196,17 +196,15 @@ snippet case
 		${2:// code...}
 		break;${3}
 snippet for
-	for ($${2:i} = 0; $$2 < ${1:count}; $$2${3:++}) 
-	{
+	for ( $${2:i} = 0; $$2 < ${1:count}; $$2${3:++} ){
 		${4: // code...}
 	}
 snippet foreach
-	foreach ($${1:variable} as $${2:key}) 
-	{
+	foreach ( $${1:variable} as $${2:key} ){
 		${3:// code...}
 	}
 snippet fun
-	${1:public }function ${2:FunctionName}(${3})
+	${1:public }function ${2:FunctionName}( ${3} )
 	{
 		${4:// code...}
 	}
@@ -215,7 +213,7 @@ snippet array
 	$${1:arrayName} = array('${2}' => ${3});${4}
 
 snippet method
-	${1:public} function ${2:methodName}($${3:parameter})
+	${1:public} function ${2:methodName}( $${3:parameter} )
 	{
 		${4:// code...}
 	}
