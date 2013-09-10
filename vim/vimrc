@@ -87,7 +87,8 @@ else
 	colorscheme badwolf
 endif
 
-set guifont=Menlo\ Regular\ for\ Powerline:h12
+set guifont=Inconsolata\ for\ Powerline:h14
+let g:airline_powerline_fonts = 1
 set t_Co=256
 
 syntax on
@@ -97,11 +98,11 @@ syntax on
 set wildmenu
 " }}}
 " Backup ------------------------------------------------------------------- {{{
-" backup to ~/.tmp 
-set backup 
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
-set backupskip=/tmp/*,/private/tmp/* 
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+" backup to ~/.tmp
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 " }}}
 
@@ -168,6 +169,7 @@ let g:ctrlp_show_hidden = 1
 
 " }}}
 " MAPPINGS ----------------------------------------------------------------- {{{
+
 " folding mappings --------------------------------------------------------- {{{
 nnoremap <Space> za
 vnoremap <Space> za
@@ -199,7 +201,7 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-" remapeamos las flechas para cambiar de buffer 
+" remapeamos las flechas para cambiar de buffer
 nmap <silent> <Up> :wincmd k<CR>
 nmap <silent> <Down> :wincmd j<CR>
 nmap <silent> <Left> :wincmd h<CR>
@@ -268,6 +270,7 @@ map <leader>vrc <esc>:vnew<cr>:e ~/.vimrc<cr>
 "Shitty finnish layout, DIE!
 inoremap <D-º> \
 " }}}
+
 " }}}
 " LANGUAGE SPECIFIC -------------------------------------------------------- {{{
 
@@ -465,9 +468,9 @@ function! ToggleColorscheme() " {{{
 		set background=light
 		colorscheme solarized
 	endif
-endfunction 
+endfunction
 nnoremap <f7> :call ToggleColorscheme()<cr>
-"}}} 
+"}}}
 
 " This will only work if we are on the root of a dir containing coffee/ and js/
 " subdirectories
