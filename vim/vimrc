@@ -18,7 +18,6 @@ set cursorline
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-set expandtab
 set cindent
 set autoindent
 set encoding=utf-8
@@ -208,31 +207,6 @@ nmap <silent> <Right> :wincmd l<CR>
 
 "}}}
 " editor mappings ---------------------------------------------------------- {{{
-
-" Mapeos para teclado finés: 
-inoremap € $
-nnoremap € $
-vnoremap € $
-inoremap <D-å> [
-inoremap ¨ ]
-inoremap <D-ä> {
-inoremap <D-'> }
-inoremap ö ñ
-
-" Mapeos para autocompletado de paréntesis y llaves
-inoremap { {}<left>
-inoremap {{ {
-inoremap {} {}
-inoremap [ []<esc>i
-inoremap [[ [
-inoremap [] []
-inoremap ( ()<left>
-inoremap (( (
-inoremap () ()
-inoremap " ""<left>
-inoremap "" ""
-inoremap ' ''<left>
-inoremap '' ''
 
 " Autocompletion
 inoremap <c-space> <c-x><c-o>

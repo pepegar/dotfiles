@@ -196,26 +196,24 @@ snippet case
 		${2:// code...}
 		break;${3}
 snippet for
-	for ( $${2:i} = 0; $$2 < ${1:count}; $$2${3:++} ){
+	for ( $${2:i} = 0; $$2 < ${1:count}; $$2${3:++} ) {
 		${4: // code...}
 	}
 snippet foreach
-	foreach ( $${1:variable} as $${2:key} ){
+	foreach ( $${1:variable} as $${2:key} ) {
 		${3:// code...}
 	}
 snippet fun
-	${1:public }function ${2:FunctionName}( ${3} )
-	{
+	${1:public }function ${2:FunctionName}( ${3} ) {
 		${4:// code...}
 	}
 # $... = array (...)
 snippet array
 	$${1:arrayName} = array('${2}' => ${3});${4}
 
-snippet method
-	${1:public} function ${2:methodName}( $${3:parameter} )
-	{
-		${4:// code...}
-	}
 snippet dump
 	var_dump(${1});
+
+snippet construct
+	public function __construct( ${1} ) {
+	}
