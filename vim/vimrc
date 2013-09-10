@@ -83,12 +83,12 @@ if has("gui_running")
 	set guioptions-=egt
 	set guioptions=LR
 	set guioptions-=LR
+	set guifont=Inconsolata\ for\ Powerline:h14
+	let g:airline_powerline_fonts = 1
 else
 	colorscheme badwolf
 endif
 
-set guifont=Inconsolata\ for\ Powerline:h14
-let g:airline_powerline_fonts = 1
 set t_Co=256
 
 syntax on
