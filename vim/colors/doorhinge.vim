@@ -1,7 +1,7 @@
 " doorhinge.vim - Vim color file
-" Maintainer:	talso <dimset@gmail.com>
-" Last Change:	Oct 6, 2006
-" Version: 0.3
+" Maintainer:	Scott McRae <dimset@gmail.com>
+" Last Change:	Oct 30, 2007
+" Version: 0.6
 "
 "  +-----+
 " [|     |   Rhymes with?
@@ -10,70 +10,90 @@
 "  |     |
 " [|     |
 "  +-----+ 
-"
-" Fugly in console, gvim <3.
 " 
-" http://vimdoc.sourceforge.net/htmldoc/syntax.html
-" http://www.drpeterjones.com/colorcalc/
-
-" #804000 - dark orange
-" #FF7700 - better orange
-" #FF8040 - bright orange
-" #A50000 - dark red
-
-" First remove all existing highlighting.
+" http://www.vim.org/scripts/script.php?script_id=1671 - doorhinge.vim
+" http://members.shaw.ca/dimset/vim/_vimrc - my vimrc!
+" http://members.shaw.ca/dimset/vim/doorhinge.vim - mirror
+" http://members.shaw.ca/dimset/vim/guishot.png - GUI screenshot
+" http://members.shaw.ca/dimset/vim/xtermshot.png - xterm w/transparency
+"
+" Updated: cleaned up a bit, added cursorline, diff, pmenu, tabline,
+" minibuf, modified statusline, visual modes, folds, color tweaks
+"
+"
 set background=dark
+" Remove all existing highlighting
 hi clear
 if exists("syntax_on")
   syntax reset
 endif
-
+" Theme Name
 let g:colors_name = "doorhinge"
 
-hi Normal		guifg=#DDDDDD guibg=#405871				ctermbg=DarkGrey ctermfg=White 
+hi Normal		    guibg=#405871   guifg=#BFCFFF   ctermfg=LightGray   ctermbg=none 
 
-hi ErrorMsg		guibg=#A50000 guifg=White	term=standout		ctermbg=DarkRed ctermfg=White 
-hi WarningMsg 		guibg=#A50000 guifg=White	term=standout		ctermfg=LightRed 
+hi ErrorMsg		    guibg=#A50000   guifg=White     ctermfg=Red         ctermbg=none        term=bold       cterm=bold
+hi WarningMsg 		guibg=#FFCC00   guifg=White     ctermfg=Yellow      ctermbg=none        term=bold       cterm=bold
 
-hi Search		guibg=#FFFFFF guifg=#25345F 	term=reverse		ctermbg=DarkBlue ctermfg=White 
-hi IncSearch		guifg=#FF9911 guibg=#804000				ctermfg=darkblue ctermbg=gray
+hi IncSearch		guibg=#804000   guifg=#FF9911 	ctermfg=DarkRed     ctermbg=Brown       term=bold            
+hi Search		    guibg=#804000   guifg=#FF9911   ctermfg=DarkRed     ctermbg=Brown       term=bold       gui=reverse    
 
-hi StatusLine		guifg=#FFFFFF guibg=#25345F gui=none	term=none	ctermfg=White ctermbg=DarkBlue cterm=none
-hi StatusLineNC		guifg=#CCCCCC guibg=#25345F gui=none	term=none	ctermfg=LightGrey ctermbg=DarkBlue  cterm=none
-hi VertSplit		guifg=#CCCCCC guibg=#25345F gui=none	term=none	ctermfg=LightGrey ctermbg=DarkBlue  cterm=none
-hi LineNr		guifg=#25345F 				term=underline	ctermfg=Blue 
+hi StatusLine		guibg=#25345F   guifg=#647C95   ctermfg=White       ctermbg=DarkBlue    term=underline  cterm=underline     gui=underline		    
+hi StatusLineNC	    guibg=#25345F   guifg=#526A83   ctermfg=Gray        ctermbg=DarkBlue    term=none       cterm=none       gui=none
+hi VertSplit		guibg=#25345F   guifg=#526A83   ctermfg=White       ctermbg=DarkBlue    term=none       cterm=none       gui=none		
+hi LineNr		                    guifg=#25345F   ctermfg=White       ctermbg=DarkBlue    term=none
 
-hi Directory 		guifg=#CCCCFF 			term=bold		ctermfg=LightCyan 
-hi WildMenu 		guibg=Black guifg=#FF9911 	term=standout		ctermbg=Black ctermfg=Yellow 
-hi Folded		guibg=#25345F guifg=#CCCCCC	term=standout		ctermbg=DarkBlue ctermfg=LightGrey
-hi FoldColumn 		guibg=#25345F guifg=#FFFFFF	term=standout		ctermbg=DarkBlue ctermfg=LightGrey
+hi Directory 		guibg=#405871   guifg=#CCCCFF   ctermfg=White       ctermbg=none        term=bold		   
+hi WildMenu 		guibg=Black     guifg=#FF9911   ctermfg=Brown       ctermbg=Black       term=standout	
+hi Folded		    guibg=#25345F   guifg=#CCCCCC   ctermfg=White       ctermbg=DarkBlue    term=standout	cterm=underline
+hi FoldColumn 		guibg=#25345F   guifg=#FFFFFF   ctermfg=White       ctermbg=DarkBlue    term=standout	
 
-hi Cursor		guibg=#BFE4FF guifg=Black
-hi lCursor		guibg=#255A70 guifg=Black
+hi Cursor		    guibg=#25345F   guifg=#CCCCCC   ctermfg=White       ctermbg=Blue
+hi lCursor		    guibg=#25345F   guifg=#CCCCCC
+hi CursorColumn     guibg=#49617A
+hi CursorLine       guibg=#5B738C
 
-hi Visual 		guifg=#E5ECFF guibg=#25345F gui=reverse	term=reverse cterm=reverse  
-hi VisualNOS 		gui=underline,bold		term=underline,bold	cterm=underline,bold 
+hi Visual 		    guibg=#25345F   guifg=#647C95   ctermfg=White       ctermbg=none        term=bold       cterm=bold      gui=none 
+hi VisualNOS 		guibg=#25345F   guifg=#526A83   ctermfg=White       ctermbg=none        term=bold       cterm=bold      gui=underline
 
-hi DiffText		guibg=Red gui=bold 		term=reverse 		ctermbg=Red cterm=bold  
-hi DiffAdd 		guibg=DarkBlue 			term=bold 		ctermbg=DarkBlue 
-hi DiffChange 		guibg=DarkMagenta		term=bold		ctermbg=DarkMagenta 
-hi DiffDelete 		guifg=Blue guibg=DarkCyan gui=bold	term=bold 	ctermfg=Blue ctermbg=DarkCyan  
+hi DiffText		    guibg=#FF9911   guifg=White     gui=none 	
+hi DiffAdd 		    guibg=#FFB720   guifg=White	    gui=bold         
+hi DiffChange 		guibg=#D26C00		            gui=underline     
+hi DiffDelete 		guibg=#AA4400   guifg=#DDDDDD   gui=bold	
 
-hi Comment		guifg=#80C9FF
-hi PreProc		guifg=#999999
-hi Constant 		guifg=#FF9911			term=underline		ctermfg=Magenta 
-hi Special 		guifg=#FF9911 guibg=grey5	term=bold		ctermfg=LightRed
-hi Identifier		guifg=#BBBBBB
-hi Statement 		guifg=#FFFFFF gui=bold		term=bold		ctermfg=Yellow cterm=bold  
-hi Type			guifg=#80C9FF gui=NONE 		term=underline		ctermfg=Blue 
-hi Tag 			guifg=DarkGreen			term=bold 		ctermfg=DarkGreen 
-hi Title 		guifg=Lightblue			term=bold		ctermfg=LightMagenta  
-hi Question 		guifg=#FF9911 gui=bold 		term=standout		ctermfg=LightGreen 
-hi SpecialKey 		guifg=Cyan 			term=bold		ctermfg=LightBlue
-hi Todo			guifg=orangered guibg=yellow2
+" vim 7+
+if v:version >= 700
+hi Pmenu            guibg=#25345F   guifg=#647C95
+hi PmenuSel         guibg=#2E3D68   guifg=#CCCCCC   gui=underline
+hi PmenuSbar        guibg=Black     guifg=#CCCCCC
+hi PmenuThumb       guibg=Black     guifg=#FF9911
+endif
 
-hi Ignore 		guifg=grey20 						ctermfg=DarkGrey 
-hi ModeMsg 		gui=bold			term=bold		cterm=bold 
-hi MoreMsg 		guifg=#FF9911 gui=bold		term=bold		ctermfg=LightGreen  
-hi NonText 		guifg=LightBlue guibg=grey30 gui=bold 	term=bold	ctermfg=LightBlue 
+" minibufexplorer
+hi MBENormal        guibg=#405871   guifg=#5EA7DD   ctermfg=White       ctermbg=DarkBlue    term=none       gui=none 
+hi MBEChanged       guibg=#405871   guifg=#80C9FF   ctermfg=White       ctermbg=DarkBlue    term=Bold       gui=none
+hi MBEVisibleNormal guibg=#25345F   guifg=#5EA7DD   ctermfg=White       ctermbg=DarkBlue    term=none       gui=none
+hi MBEVisibleChanged    guibg=#25345F   guifg=#80C9FF   ctermfg=White       ctermbg=DarkBlue    term=Bold       gui=none
+
+hi perlSpecialMatch   guifg=#FF9911   guibg=Black   ctermfg=Brown       ctermbg=Black
+hi perlSpecialString  guifg=#FF9911   guibg=Black   ctermfg=Brown       ctermbg=Black
+
+hi Comment		                    guifg=#5EA7DD   ctermfg=DarkCyan    ctermbg=none        term=bold       cterm=bold
+hi PreProc		                    guifg=#999999   ctermfg=LightGray   ctermbg=none        term=bold       cterm=bold
+hi Constant 		                guifg=#FF9911	ctermfg=Brown       ctermbg=none		term=underline
+hi Special 		    guibg=Black	    guifg=#FF9911   ctermfg=Brown       ctermbg=Black       term=bold
+hi Identifier		                guifg=#BBBBBB   ctermfg=LightGray   ctermbg=none
+hi Tag              guibg=Black     guifg=#B0E0E6
+hi Statement 	                    guifg=#FFFFFF   ctermfg=White       ctermbg=none        term=bold       cterm=bold  gui=bold      
+hi Type			                    guifg=#80C9FF   ctermfg=LightCyan   ctermbg=none      	term=underline  gui=NONE
+hi Title 		                    guifg=#C8E2FF   ctermfg=Cyan        ctermbg=DarkBlue	term=bold	    gui=bold
+hi Question 		                guifg=#80C9FF   ctermfg=Blue        ctermbg=none        cterm=bold      term=bold   gui=bold
+hi SpecialKey 		                guifg=#677F98 	                                        term=bold
+hi SignColumn       guibg=Black     guifg=#FF9911
+hi Todo			    guibg=yellow2   guifg=orangered ctermfg=Brown       ctermbg=Yellow
+hi Ignore 		                    guifg=grey20 	ctermfg=DarkGrey    ctermbg=none
+hi ModeMsg 		                    guifg=#80C9FF   ctermfg=Blue        ctermbg=none        cterm=bold      term=bold   gui=bold
+hi MoreMsg 		                    guifg=#80C9FF   ctermfg=Blue        ctermbg=none        cterm=bold      term=bold   gui=bold
+hi NonText 		    guibg=#2D3D4F   guifg=#405871   ctermfg=DarkGray    ctermbg=none        cterm=bold      term=bold   gui=bold		        
+hi MatchParen       guibg=Black     guifg=#FF9911   ctermfg=Brown       ctermbg=none        cterm=bold      term=bold   gui=bold
 " EOF

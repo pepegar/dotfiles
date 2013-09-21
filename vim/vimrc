@@ -53,19 +53,19 @@ set foldmethod=marker
 
 " From Steve Losh
 function! MyFoldText() " {{{
-    let line = getline(v:foldstart)
+	let line = getline(v:foldstart)
 
-    let nucolwidth = &fdc + &number * &numberwidth
-    let windowwidth = winwidth(0) - nucolwidth - 3
-    let foldedlinecount = v:foldend - v:foldstart
+	let nucolwidth = &fdc + &number * &numberwidth
+	let windowwidth = winwidth(0) - nucolwidth - 3
+	let foldedlinecount = v:foldend - v:foldstart
 
-    " expand tabs into spaces
-    let onetab = strpart('          ', 0, &tabstop)
-    let line = substitute(line, '\t', onetab, 'g')
+	" expand tabs into spaces
+	let onetab = strpart('          ', 0, &tabstop)
+	let line = substitute(line, '\t', onetab, 'g')
 
-    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+	let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+	let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+	return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction " }}}
 
 set foldtext=MyFoldText()
@@ -76,7 +76,7 @@ set nowrap
 " Appearance --------------------------------------------------------------- {{{
 
 if has("gui_running")
-    set fuoptions=maxvert,maxhorz
+	set fuoptions=maxvert,maxhorz
 	colorscheme Molokai
 	map <F1> :set invfu<CR>
 	set colorcolumn=+1
@@ -89,13 +89,11 @@ else
 	colorscheme badwolf
 endif
 
+set wildmenu
 set t_Co=256
 
 syntax on
 
-" }}}
-" Wildmenu ----------------------------------------------------------------- {{{
-set wildmenu
 " }}}
 " Backup ------------------------------------------------------------------- {{{
 " backup to ~/.tmp
@@ -218,6 +216,11 @@ inoremap <F1> <nop>
 " permite ejecutar w!! para guardar ficheros de sólo lectura
 cmap w!! w !sudo tee % >/dev/null
 
+inoremap ' ''<left>
+inoremap [ []<left>
+inoremap ( ()<left>
+inoremap { {}<left>
+
 " volver a seleccionar despues de indentar
 vnoremap < <gv
 vnoremap > >gv
@@ -305,48 +308,51 @@ augroup ft_js
 augroup END
 "}}}
 " PYTHON ------------------------------------------------------------------- {{{
-augroup ft_py
+augroup ft_python
 	au!
-
+	au Filetype python set smartindent
+	au Filetype python set tabstop=4
+	au Filetype python set shiftwidth=4
+	au Filetype python set expandtab
 augroup END
 " }}}
 " CSS ---------------------------------------------------------------------- {{{
 
 " Not mine, from Steve Losh, again
 augroup ft_css
-    au!
+	au!
 
-    au BufNewFile,BufRead *.less setlocal filetype=less
+	au BufNewFile,BufRead *.less setlocal filetype=less
 
-    au Filetype less,css setlocal foldmethod=marker
-    au Filetype less,css setlocal foldmarker={,}
-    au Filetype less,css setlocal omnifunc=csscomplete#CompleteCSS
-    au Filetype less,css setlocal iskeyword+=-
+	au Filetype less,css setlocal foldmethod=marker
+	au Filetype less,css setlocal foldmarker={,}
+	au Filetype less,css setlocal omnifunc=csscomplete#CompleteCSS
+	au Filetype less,css setlocal iskeyword+=-
 
-    " Use <leader>S to sort properties.  Turns this:
-    "
-    "     p {
-    "         width: 200px;
-    "         height: 100px;
-    "         background: red;
-    "
-    "         ...
-    "     }
-    "
-    " into this:
+	" Use <leader>S to sort properties.  Turns this:
+	"
+	"     p {
+	"         width: 200px;
+	"         height: 100px;
+	"         background: red;
+	"
+	"         ...
+	"     }
+	"
+	" into this:
 
-    "     p {
-    "         background: red;
-    "         height: 100px;
-    "         width: 200px;
-    "
-    "         ...
-    "     }
-    au BufNewFile,BufRead *.less,*.css nnoremap <buffer> <localleader>S ?{<CR>jV/\v^\s*\}?$<CR>k:sort<CR>:noh<CR>
+	"     p {
+	"         background: red;
+	"         height: 100px;
+	"         width: 200px;
+	"
+	"         ...
+	"     }
+	au BufNewFile,BufRead *.less,*.css nnoremap <buffer> <localleader>S ?{<CR>jV/\v^\s*\}?$<CR>k:sort<CR>:noh<CR>
 
-    " Make {<cr> insert a pair of brackets in such a way that the cursor is correctly
-    " positioned inside of them AND the following code doesn't get unfolded.
-    au BufNewFile,BufRead *.less,*.css inoremap <buffer> {<cr> {}<left><cr><space><space><space><space>.<cr><esc>kA<bs>
+	" Make {<cr> insert a pair of brackets in such a way that the cursor is correctly
+	" positioned inside of them AND the following code doesn't get unfolded.
+	au BufNewFile,BufRead *.less,*.css inoremap <buffer> {<cr> {}<left><cr><space><space><space><space>.<cr><esc>kA<bs>
 augroup END
 " }}}
 " VIM ---------------------------------------------------------------------- {{{
@@ -358,8 +364,8 @@ augroup END
 " VAGRANT ------------------------------------------------------------------ {{{
 
 augroup ft_vagrant
-    au!
-    au BufRead,BufNewFile Vagrantfile set ft=ruby
+	au!
+	au BufRead,BufNewFile Vagrantfile set ft=ruby
 augroup END
 
 " }}}
@@ -433,9 +439,9 @@ nnoremap <leader>gs :Gs<cr>
 " From: Jeff Kreeftmeijer
 function! NumberToggle() " {{{
   if(&relativenumber == 1)
-    set number
+	set number
   else
-    set relativenumber
+	set relativenumber
   endif
 endfunc
 

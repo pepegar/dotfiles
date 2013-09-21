@@ -1,10 +1,10 @@
 " Vim color file
-" Maintainer:	David Lazar <david#c7.campus.utcluj.ro>
-" Last Change:	Thu May 20 16:27:13 EEST 2004
-" Version:	2.2
+" Maintainer:	David Lazar <david_bv|wants no spam|at|yahoo|dot|com>
+" Last Change:	Fri, 25 Aug 2006 16:30:00 +0300
+" Version:	2.7
 " URL:		http://www.c7obs.net/~david/stuff/darkdot.vim
 " 
-" This colorscheme script was created using Hans Fugal's colorscheme template
+" This colorscheme script was created using Hans Fugal's colorscheme template.
 
 set background=dark
 hi clear
@@ -13,7 +13,7 @@ if exists("syntax_on")
 endif
 let g:colors_name="darkdot"
 
-hi Normal	cterm=none			gui=none	guibg=#101020	guifg=#a8aaaa
+hi Normal	cterm=none			gui=none	guibg=#00285e	guifg=#d6ebf0
 hi Cursor	cterm=none					guibg=#44ff44	guifg=#000000
 hi link CursorIM Cursor
 hi Directory				ctermfg=cyan				guifg=#44ffff
@@ -78,3 +78,20 @@ hi link Delimiter	Special
 hi link SpecialComment	Special
 hi link Debug		Special
 hi link FoldColumn	Folded
+
+if v:version >= 700
+	hi link Pmenu		StatusLineNC
+	hi link PmenuSel	StatusLine
+	hi link PmenuThumb	StatusLine
+	hi link PmenuSbar	StatusLineNC
+
+	hi SpellBad	ctermbg=none	ctermfg=red	gui=undercurl	guisp=#ff6666
+	hi SpellCap	ctermbg=none	ctermfg=blue	gui=undercurl	guisp=#6666ff
+	hi SpellRare	ctermbg=none	ctermfg=magenta	gui=undercurl	guisp=#ff66ff
+
+	hi TabLine	cterm=inverse	ctermbg=none	ctermfg=none	gui=none	guibg=#bbbbbb	guifg=#000000
+	hi TabLineSel	cterm=bold	ctermbg=none	ctermfg=none	gui=none	guibg=#bbbbbb	guifg=#000000
+	hi TabLineFill 	cterm=inverse	ctermbg=none	ctermfg=none	gui=none	guibg=#bbbbbb	guifg=#000000
+
+	hi MatchParen	cterm=bold	ctermbg=none	ctermfg=green	gui=bold	guibg=bg	guifg=#44ff44
+endif

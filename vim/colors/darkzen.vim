@@ -1,6 +1,6 @@
 " Vim color file
-" Maintainer:   Ruda Moura <ruda.moura@gmail.com>
-" Last Change:	$Date: 2005/11/12 15:40:06 $
+" Maintainer:   Rudá Moura <ruda.moura@gmail.com>
+" Last Change:	Mon Oct 18 23:09:26 BRST 2010
 
 set background=dark
 highlight clear
@@ -21,5 +21,3 @@ highlight PreProc    term=bold ctermfg=lightgreen   cterm=none guifg=green   gui
 highlight Type       term=bold ctermfg=magenta cterm=none guifg=magenta gui=none
 highlight String     term=none ctermfg=red     cterm=none guifg=red     gui=none
 highlight Number     term=none ctermfg=red     cterm=none guifg=red     gui=none
-
-" vim:ts=2:sw=2:et

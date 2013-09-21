@@ -1,3 +1,9 @@
+" Vim color file
+" Maintainer: s cunningham <toothpik@swbell.net>
+" Last Change: 2006-08-30
+" Version: 0.3
+" URL: http://vim.sourceforge.net/script.php?script_id=480
+
 set background=light
 highlight clear
 if exists( "syntax_on" )
@@ -5,9 +11,9 @@ if exists( "syntax_on" )
 endif
 let g:colors_name="toothpik"
 
-highlight Comment term=bold  guifg=Yellow
+highlight Comment term=bold  guifg=white
 highlight Constant term=underline  guifg=Blue guibg=grey
-highlight Cursor gui=reverse guifg=red guibg=white
+highlight Cursor gui=reverse guifg=White guibg=Black
 highlight lCursor guifg=black guibg=green
 highlight DiffAdd term=bold  guibg=LightBlue
 highlight DiffChange term=bold  guibg=LightMagenta
@@ -24,11 +30,11 @@ highlight IncSearch term=reverse  gui=reverse
 highlight LineNr term=underline  guifg=Brown
 highlight MoreMsg term=bold  gui=bold guifg=SeaGreen
 highlight ModeMsg term=bold  gui=bold
-highlight NonText term=bold  gui=bold guifg=Blue guibg=grey
+highlight NonText term=bold  gui=bold guifg=green guibg=grey
 highlight Normal guibg=grey 
 highlight Question term=standout  gui=bold guifg=SeaGreen
 highlight PreProc term=underline  guifg=Purple
-highlight Search term=reverse  guibg=Yellow
+highlight Search term=reverse  guibg=brown
 highlight Special term=bold  guifg=darkred guibg=grey
 highlight SpecialKey term=bold  guifg=Blue
 highlight Statement term=bold  gui=bold guifg=Brown
