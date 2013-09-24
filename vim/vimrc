@@ -43,7 +43,7 @@ set splitright
 set fillchars=diff:⣿,vert:│
 set title
 set wrap
-set textwidth=80
+"set textwidth=80
 set formatoptions=qrn1
 au VimResized * exe "normal! \<c-w>="
 " }}}
@@ -79,7 +79,7 @@ if has("gui_running")
 	set fuoptions=maxvert,maxhorz
 	colorscheme Molokai
 	map <F1> :set invfu<CR>
-	set colorcolumn=+1
+	"set colorcolumn=+1
 	set guioptions-=egt
 	set guioptions=LR
 	set guioptions-=LR
@@ -446,18 +446,6 @@ function! NumberToggle() " {{{
 endfunc
 
 nnoremap <C-n> :call NumberToggle()<cr>
-" }}}
-
-" Inspiration: Moises Gallego
-" This function prints <pre>var_dump($name)</pre> of the var name you input.
-function! JeanClaude() " {{{
-	let path = "echo 'var_dump() en " . @% . "';"
-	let openpre = "echo '<pre>';"
-	let closepre = "echo '</pre>';"
-	let nombre = inputdialog("nombre de la variable: ")
-	exec "normal! O" . path  . "\n" . openpre . "\nvar_dump($" . nombre . ");\n" . closepre
-endfunction
-command! -bar -narg=0 Jeanclaude call JeanClaude()
 " }}}
 
 function! HighlightAnnotations() " {{{
