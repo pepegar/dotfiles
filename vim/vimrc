@@ -217,9 +217,13 @@ inoremap <F1> <nop>
 cmap w!! w !sudo tee % >/dev/null
 
 inoremap ' ''<left>
+inoremap '' ''<left>
 inoremap [ []<left>
+inoremap [] []<left>
 inoremap ( ()<left>
+inoremap () ()<left>
 inoremap { {}<left>
+inoremap {} {}<left>
 
 " volver a seleccionar despues de indentar
 vnoremap < <gv
@@ -310,10 +314,11 @@ augroup END
 " PYTHON ------------------------------------------------------------------- {{{
 augroup ft_python
 	au!
-	au Filetype python set smartindent
-	au Filetype python set tabstop=4
-	au Filetype python set shiftwidth=4
-	au Filetype python set expandtab
+	au Filetype python setlocal smartindent
+	au Filetype python setlocal tabstop=4
+	au Filetype python setlocal shiftwidth=4
+	au Filetype python setlocal expandtab
+	au Filetype python setlocal foldmethod=syntax
 augroup END
 " }}}
 " CSS ---------------------------------------------------------------------- {{{
