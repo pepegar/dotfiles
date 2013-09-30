@@ -13,6 +13,7 @@ alias zshreload="source ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias md="mkdir"
 alias trac-serve="tracd -s -r --port 8000 --basic-auth='development,/Users/Pepe/Projects/trac/development/trac-development,admin' /Users/Pepe/Projects/trac/development"
+alias celar="clear"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
