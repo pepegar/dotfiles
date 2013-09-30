@@ -310,8 +310,7 @@ augroup END
 " JAVASCRIPT --------------------------------------------------------------- {{{
 augroup ft_js
 	au!
-	au Filetype javascript setlocal foldmethod=marker
-	au Filetype javascript setlocal foldmarker={,}
+	au FileType javascript call JavaScriptFold()
 augroup END
 "}}}
 " PYTHON ------------------------------------------------------------------- {{{
