@@ -13,4 +13,5 @@ ln -s ~/dotfiles/vimperator ~/.vimperator
 ln -s ~/dotfiles/vimperatorrc ~/.vimperatorrc
 ln -s ~/dotfiles/gitconfig ~/.gitconfig
 ln -s ~/dotfiles/zshrc ~/.zshrc
+ln -s ~/dotfiles/sqliterc ~/.sqliterc
 echo "-------- done! ---------"
