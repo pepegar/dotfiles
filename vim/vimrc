@@ -6,6 +6,7 @@
 " Basics ------------------------------------------------------------------- {{{
 let mapleader = ","
 set relativenumber
+set number
 nnoremap H 0
 nnoremap L $
 filetype on
@@ -77,9 +78,8 @@ set nowrap
 
 if has("gui_running")
 	set fuoptions=maxvert,maxhorz
-	colorscheme Luna
+	colorscheme mango
 	map <F1> :set invfu<CR>
-	"set colorcolumn=+1
 	set guioptions-=egt
 	set guioptions=LR
 	set guioptions-=LR
@@ -460,18 +460,6 @@ function! HighlightAnnotations() " {{{
 endfunction
 
 autocmd Syntax * call HighlightAnnotations() " }}}
-
-function! ToggleColorscheme() " {{{
-	if (g:colors_name == "solarized")
-		set background=dark
-		colorscheme Luna
-	else
-		set background=light
-		colorscheme Sol
-	endif
-endfunction
-nnoremap <f7> :call ToggleColorscheme()<cr>
-"}}}
 
 " This will only work if we are on the root of a dir containing coffee/ and js/
 " subdirectories
