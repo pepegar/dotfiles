@@ -78,7 +78,7 @@ set nowrap
 
 if has("gui_running")
 	set fuoptions=maxvert,maxhorz
-	colorscheme mango
+	colorscheme Molokai
 	map <F1> :set invfu<CR>
 	set guioptions-=egt
 	set guioptions=LR
@@ -93,6 +93,8 @@ set wildmenu
 set t_Co=256
 
 syntax on
+
+set background=dark
 
 " }}}
 " Backup ------------------------------------------------------------------- {{{
@@ -310,7 +312,8 @@ augroup END
 " JAVASCRIPT --------------------------------------------------------------- {{{
 augroup ft_js
 	au!
-	au FileType javascript call JavaScriptFold()
+	au FileType javascript setlocal foldmethod=marker
+	au Filetype javascript setlocal foldmarker={,}
 augroup END
 "}}}
 " PYTHON ------------------------------------------------------------------- {{{
