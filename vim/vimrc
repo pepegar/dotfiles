@@ -176,7 +176,6 @@ vnoremap <Space> za
 " }}}
 " movement mappings -------------------------------------------------------- {{{
 
-" Avanzar o retroceder 10 lineas
 inoremap ñj <Esc>10ji
 inoremap ñk <Esc>10ki
 noremap ñj 10j
@@ -184,14 +183,11 @@ noremap ñk 10k
 
 map <tab> %
 
-" Borramos hasta el final de la linea
 nnoremap D d$
 
-" Mantenemos el resultado en el centro al buscar
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-" <<desmapeamos>> las flechas
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
@@ -201,11 +197,13 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-" remapeamos las flechas para cambiar de buffer
 nmap <silent> <Up> :wincmd k<CR>
 nmap <silent> <Down> :wincmd j<CR>
 nmap <silent> <Left> :wincmd h<CR>
 nmap <silent> <Right> :wincmd l<CR>
+
+nmap <c-j> jzz
+nmap <c-k> kzz
 
 "}}}
 " editor mappings ---------------------------------------------------------- {{{
