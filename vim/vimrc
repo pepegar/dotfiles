@@ -78,15 +78,13 @@ set nowrap
 
 if has("gui_running")
 	set fuoptions=maxvert,maxhorz
-	colorscheme Molokai
+	colorscheme elrodeo
 	map <F1> :set invfu<CR>
 	set guioptions-=egt
 	set guioptions=LR
 	set guioptions-=LR
 	set guifont=Inconsolata\ for\ Powerline:h14
 	let g:airline_powerline_fonts = 1
-else
-	colorscheme badwolf
 endif
 
 set wildmenu
@@ -225,14 +223,14 @@ inoremap <F1> <nop>
 " permite ejecutar w!! para guardar ficheros de sólo lectura
 cmap w!! w !sudo tee % >/dev/null
 
-inoremap ' ''<left>
-inoremap '' ''<left>
+inoremap " ""<left>
+inoremap "" ""
 inoremap [ []<left>
-inoremap [] []<left>
+inoremap [] []
 inoremap ( ()<left>
-inoremap () ()<left>
+inoremap () ()
 inoremap { {}<left>
-inoremap {} {}<left>
+inoremap {} {}
 
 " i forgot how to Vim
 command! Q quit
