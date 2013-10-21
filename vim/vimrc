@@ -166,6 +166,15 @@ let g:symfony_app_console_path= "app/console"
 " ctrlp-vim ---------------------------------------------------------------- {{{
 let g:ctrlp_show_hidden = 1
 " }}}
+" rainbow parentheses ------------------------------------------------------ {{{
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+" }}}
 
 " }}}
 " MAPPINGS ----------------------------------------------------------------- {{{
@@ -406,6 +415,15 @@ augroup ft_coffeescript
 	au FileType coffee set softtabstop=2
 	au BufNewFile,BufReadPost *.coffee setl foldmethod=indent
 	au BufWritePost *.coffee silent CoffeeGenerate
+augroup END
+" }}}
+" CLOJURE ------------------------------------------------------------------ {{{
+augroup ft_clojure
+	au!
+	au FileType clojure setlocal expandtab
+	au FileType clojure setlocal tabstop=2
+	au FileType clojure set shiftwidth=2
+	au FileType clojure set softtabstop=2
 augroup END
 " }}}
 " TWIG---------------------------------------------------------------------- {{{
