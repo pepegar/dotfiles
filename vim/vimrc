@@ -226,11 +226,14 @@ cmap w!! w !sudo tee % >/dev/null
 inoremap " ""<left>
 inoremap "" ""
 inoremap [ []<left>
+inoremap [[ [
 inoremap [] []
 inoremap ( ()<left>
 inoremap () ()
+inoremap (( (
 inoremap { {}<left>
 inoremap {} {}
+inoremap {{ {
 
 " i forgot how to Vim
 command! Q quit
