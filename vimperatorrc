@@ -24,6 +24,8 @@ nnoremap k 3k
 nnoremap h 3h
 nnoremap l 3l
 
+set hintchars=asdfghjklñ
+
 " Find
 "" perform incremental searching
 set incsearch
