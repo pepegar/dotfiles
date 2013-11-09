@@ -57,6 +57,8 @@ map > L
 hi CompItem  font-size: 12px;
 hi CompTitle color: magenta; font-weight: bold; font-size: 12px;
 
+autocmd LocationChange .* js modes.passAllKeys = /(www|mail)\.google\.com/.test(buffer.URL)
+
 " Commands
 "" Open Localhost
 command! localhost open http://localhost
