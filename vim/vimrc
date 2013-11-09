@@ -77,15 +77,12 @@ set nowrap
 
 if has("gui_running")
 	set fuoptions=maxvert,maxhorz
-	colorscheme elrodeo
 	map <F1> :set invfu<CR>
 	set guioptions-=egt
 	set guioptions=LR
 	set guioptions-=LR
 	set guifont=Inconsolata\ for\ Powerline:h14
 	let g:airline_powerline_fonts = 1
-else
-	colorscheme molokai
 endif
 
 set wildmenu
@@ -94,6 +91,8 @@ set t_Co=256
 syntax on
 
 set background=dark
+
+colors molokai
 
 " }}}
 " Backup ------------------------------------------------------------------- {{{
@@ -493,39 +492,39 @@ function! CoffeeGenerate() " {{{
 endfunction "}}}
 
 function GetClojureFold() " {{{
-      if getline(v:lnum) =~ '^\s*(defn.*\s'
-            return ">1"
-      elseif getline(v:lnum) =~ '^\s*(def\(macro\|method\|page\|partial\).*\s'
-            return ">1"
-      elseif getline(v:lnum) =~ '^\s*(defmethod.*\s'
-            return ">1"
-      elseif getline(v:lnum) =~ '^\s*$'
-            let my_cljnum = v:lnum
-            let my_cljmax = line("$")
+	  if getline(v:lnum) =~ '^\s*(defn.*\s'
+			return ">1"
+	  elseif getline(v:lnum) =~ '^\s*(def\(macro\|method\|page\|partial\).*\s'
+			return ">1"
+	  elseif getline(v:lnum) =~ '^\s*(defmethod.*\s'
+			return ">1"
+	  elseif getline(v:lnum) =~ '^\s*$'
+			let my_cljnum = v:lnum
+			let my_cljmax = line("$")
 
-            while (1)
-                  let my_cljnum = my_cljnum + 1
-                  if my_cljnum > my_cljmax
-                        return "<1"
-                  endif
+			while (1)
+				  let my_cljnum = my_cljnum + 1
+				  if my_cljnum > my_cljmax
+						return "<1"
+				  endif
 
-                  let my_cljdata = getline(my_cljnum)
+				  let my_cljdata = getline(my_cljnum)
 
-                  " If we match an empty line, stop folding
-                  if my_cljdata =~ '^$'
-                        return "<1"
-                  else
-                        return "="
-                  endif
-            endwhile
-      else
-            return "="
-      endif
+				  " If we match an empty line, stop folding
+				  if my_cljdata =~ '^$'
+						return "<1"
+				  else
+						return "="
+				  endif
+			endwhile
+	  else
+			return "="
+	  endif
 endfunction
 
 function TurnOnClojureFolding()
-      setlocal foldexpr=GetClojureFold()
-      setlocal foldmethod=expr
+	setlocal foldexpr=GetClojureFold()
+	setlocal foldmethod=expr
 endfunction
 
 " Simplify the fold display
