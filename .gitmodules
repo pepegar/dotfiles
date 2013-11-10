@@ -94,3 +94,6 @@
 [submodule "vim/bundle/vim-clojure-static"]
 	path = vim/bundle/vim-clojure-static
 	url = git://github.com/guns/vim-clojure-static.git
+[submodule "vim/bundle/tabular.vim"]
+	path = vim/bundle/tabular.vim
+	url = git://github.com/godlygeek/tabular.git

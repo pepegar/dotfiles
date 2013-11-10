@@ -173,6 +173,9 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 " }}}
+" tabular ------------------------------------------------------------------ {{{
+vnoremap <leader>t :Tabularize 
+" }}}
 
 " }}}
 " MAPPINGS ----------------------------------------------------------------- {{{
@@ -529,7 +532,7 @@ endfunction
 
 " Simplify the fold display
 function MinimalFoldText()
-  return getline(v:foldstart)
+	return getline(v:foldstart)
 endfunction
 " }}}
 
