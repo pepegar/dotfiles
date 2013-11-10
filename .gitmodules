@@ -85,9 +85,6 @@
 [submodule "vim/bundle/vim-airline"]
 	path = vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
-[submodule "vim/bundle/yankring.vim"]
-	path = vim/bundle/yankring.vim
-	url = https://github.com/vim-scripts/YankRing.vim.git
 [submodule "vim/bundle/vim-fireplace"]
 	path = vim/bundle/vim-fireplace
 	url = git://github.com/tpope/vim-fireplace.git
