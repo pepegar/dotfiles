@@ -174,7 +174,10 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 " }}}
 " tabular ------------------------------------------------------------------ {{{
-vnoremap <leader>t :Tabularize 
+vnoremap <leader>t :Tabularize
+" }}}
+" airline ------------------------------------------------------------------ {{{
+let g:airline_theme='badwolf'
 " }}}
 
 " }}}
@@ -264,17 +267,17 @@ inoremap <C-u> gUiwea
 
 "busca la palabra resaltada
 vnoremap <silent> * :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy/<C-R><C-R>=substitute(
-  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gV:call setreg('"', old_reg, old_regtype)<CR>
+	\let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+	\gvy/<C-R><C-R>=substitute(
+	\escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+	\gV:call setreg('"', old_reg, old_regtype)<CR>
 
 "busca la palabra resaltada hacia detrás
 vnoremap <silent> # :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy?<C-R><C-R>=substitute(
-  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gV:call setreg('"', old_reg, old_regtype)<CR>
+	\let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+	\gvy?<C-R><C-R>=substitute(
+	\escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+	\gV:call setreg('"', old_reg, old_regtype)<CR>
 
 " }}}
 " leader mappings ---------------------------------------------------------- {{{
@@ -422,6 +425,46 @@ augroup ft_coffeescript
 augroup END
 " }}}
 " CLOJURE ------------------------------------------------------------------ {{{
+
+let g:clojure_fold_extra = [
+            \ 'defgauge',
+            \ 'defmeter',
+            \ 'defhistogram',
+            \ 'defcounter',
+            \ 'deftimer',
+            \
+            \ 'defdb',
+            \ 'defentity',
+            \ 'defaspect',
+            \ 'add-aspect',
+            \ 'defmigration',
+            \
+            \ 'defsynth',
+            \ 'definst',
+            \ 'defproject',
+            \
+            \ 'defroutes',
+            \
+            \ 'defrec',
+            \
+            \ 'defparser',
+            \
+            \ 'defform',
+            \ 'defform-',
+            \
+            \ 'defpage',
+            \ 'defsketch'
+            \
+            \ ]
+
+let g:clojure_highlight_extra_defs = [
+            \ 'defparser',
+            \
+            \ 'defproject',
+            \
+            \ 'defroutes'
+            \ ]
+
 augroup ft_clojure
 	au!
 	au FileType clojure setlocal expandtab
@@ -429,8 +472,7 @@ augroup ft_clojure
 	au FileType clojure set shiftwidth=2
 	au FileType clojure set softtabstop=2
 	au FileType clojure map <leader><leader> :Eval<cr>
-	au FileType clojure set foldtext=MinimalFoldText()
-	au FileType clojure call TurnOnClojureFolding()
+	au FileType clojure silent! call TurnOnClojureFolding()
 augroup END
 " }}}
 " TWIG---------------------------------------------------------------------- {{{
@@ -471,18 +513,18 @@ nnoremap <leader>gs :Gs<cr>
 
 " From: Jeff Kreeftmeijer
 function! NumberToggle() " {{{
-  if(&relativenumber == 1)
-	set number
-  else
-	set relativenumber
-  endif
+	if(&relativenumber == 1)
+		set number
+	else
+		set relativenumber
+	endif
 endfunc
 
 nnoremap <C-n> :call NumberToggle()<cr>
 " }}}
 
 function! HighlightAnnotations() " {{{
-  syn keyword phpKeyword contained namespace use
+	syn keyword phpKeyword contained namespace use
 endfunction
 
 autocmd Syntax * call HighlightAnnotations() " }}}
@@ -493,47 +535,5 @@ function! CoffeeGenerate() " {{{
 	let shell = "coffee --compile --output js/ coffee/"
 	call system(shell)
 endfunction "}}}
-
-function GetClojureFold() " {{{
-	  if getline(v:lnum) =~ '^\s*(defn.*\s'
-			return ">1"
-	  elseif getline(v:lnum) =~ '^\s*(def\(macro\|method\|page\|partial\).*\s'
-			return ">1"
-	  elseif getline(v:lnum) =~ '^\s*(defmethod.*\s'
-			return ">1"
-	  elseif getline(v:lnum) =~ '^\s*$'
-			let my_cljnum = v:lnum
-			let my_cljmax = line("$")
-
-			while (1)
-				  let my_cljnum = my_cljnum + 1
-				  if my_cljnum > my_cljmax
-						return "<1"
-				  endif
-
-				  let my_cljdata = getline(my_cljnum)
-
-				  " If we match an empty line, stop folding
-				  if my_cljdata =~ '^$'
-						return "<1"
-				  else
-						return "="
-				  endif
-			endwhile
-	  else
-			return "="
-	  endif
-endfunction
-
-function TurnOnClojureFolding()
-	setlocal foldexpr=GetClojureFold()
-	setlocal foldmethod=expr
-endfunction
-
-" Simplify the fold display
-function MinimalFoldText()
-	return getline(v:foldstart)
-endfunction
-" }}}
 
 " }}}

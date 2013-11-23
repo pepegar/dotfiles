@@ -62,3 +62,6 @@ autocmd LocationChange .* js modes.passAllKeys = /(www|mail)\.google\.com/.test(
 " Commands
 "" Open Localhost
 command! localhost open http://localhost
+command! yt open http://youtube.com
+command! tw open http://twitter.com
+command! goog open http://facebook.com

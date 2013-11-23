@@ -5,10 +5,10 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="dpoggi"
+ZSH_THEME="pepe"
 
 # Example aliases
-alias zshconfig="vim ~/.zshrc"
+alias zshrc="vim ~/.zshrc"
 alias zshreload="source ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias vimrc="vim ~/.vimrc"
@@ -19,6 +19,7 @@ alias vim="mvim -v"
 alias vi="mvim -v"
 alias :q="exit"
 alias phpunit="phpunit --color"
+alias vimperatorrc="vim ~/.vimperatorrc"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
