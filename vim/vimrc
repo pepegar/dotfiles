@@ -153,10 +153,6 @@ let g:tagbar_phpctags_bin='~/phpctags/phpctags'
 " Gundo -------------------------------------------------------------------- {{{
 nmap <F5> :GundoToggle<CR>
 " }}}
-" Refucktor ---------------------------------------------------------------- {{{
-vnoremap <leader>rv :call ExtractVariable()<cr>
-vnoremap <leader>rm :call ExtractToMethod()<cr>
-"}}}
 " vim-symfony -------------------------------------------------------------- {{{
 let g:symfony_app_console_caller= "php"
 let g:symfony_app_console_path= "app/console"
@@ -309,7 +305,13 @@ augroup ft_php
 	au FileType php setlocal tabstop=4
 	au FileType php setlocal keywordprg=pman
 	au FileType php inoremap <C-o> :set paste<CR>:exe PhpDoc()<CR>:set nopaste<CR>i
+	" Refactors!
+	" Extract variable
+	au FileType php vnoremap <leader>rev di$variable<ESC>O$variable = <ESC>pA;<ESC>
+	" Extract method
+	au FileType php vnoremap <leader>rem dO$this->newMethod();<ESC>?function<CR>O<ESC>Opublic function newMethod() {}<ESC>ha<CR><ESC>P
 augroup END
+
 " }}}
 " HTML --------------------------------------------------------------------- {{{
 augroup ft_html
