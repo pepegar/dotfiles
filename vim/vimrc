@@ -75,6 +75,12 @@ set nowrap
 " }}}
 " Appearance --------------------------------------------------------------- {{{
 
+set wildmenu
+set t_Co=256
+
+syntax on
+
+
 if has("gui_running")
 	set fuoptions=maxvert,maxhorz
 	map <F1> :set invfu<CR>
@@ -83,16 +89,11 @@ if has("gui_running")
 	set guioptions-=LR
 	set guifont=Inconsolata\ for\ Powerline:h14
 	let g:airline_powerline_fonts = 1
+	colors elrodeo
+else
+	set background=dark
+	colors molokai
 endif
-
-set wildmenu
-set t_Co=256
-
-syntax on
-
-set background=dark
-
-colors molokai
 
 " }}}
 " Backup ------------------------------------------------------------------- {{{
@@ -174,6 +175,9 @@ vnoremap <leader>t :Tabularize
 " }}}
 " airline ------------------------------------------------------------------ {{{
 let g:airline_theme='badwolf'
+" }}}
+" neocomplete -------------------------------------------------------------- {{{
+
 " }}}
 
 " }}}
@@ -342,6 +346,12 @@ augroup ft_python
 	au Filetype python setlocal foldmethod=syntax
 augroup END
 " }}}
+" HASKELL ------------------------------------------------------------------ {{{
+augroup ft_haskell
+	au!
+	au bufenter *.hs compiler ghc
+augroup END
+" }}}
 " CSS ---------------------------------------------------------------------- {{{
 
 " Not mine, from Steve Losh, again
@@ -399,6 +409,14 @@ augroup END
 augroup ft_man
 	au!
 	au FileType man setlocal foldmethod=indent
+augroup END
+" }}}
+" GO ----------------------------------------------------------------------- {{{
+augroup ft_go
+	au!
+	au BufRead,BufNewFile *.go set filetype=go
+	au FileType go set rtp+=/usr/local/go/misc/vim
+	au FileType go filetype plugin indent on
 augroup END
 " }}}
 " MARKDOWN ----------------------------------------------------------------- {{{
@@ -485,6 +503,8 @@ augroup ft_twig
 augroup END
 
 " }}}
+
+
 
 " }}}
 " FUNCTIONS ---------------------------------------------------------------- {{{
