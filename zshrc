@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="pepe"
+ZSH_THEME="dpoggi"
 
 # Example aliases
 alias zshrc="vim ~/.zshrc"
@@ -13,20 +13,17 @@ alias zshreload="source ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias vimrc="vim ~/.vimrc"
 alias md="mkdir"
-alias trac-serve="tracd -s -r --port 8000 --basic-auth='development,/Users/Pepe/Projects/trac/development/trac-development,admin' /Users/Pepe/Projects/trac/development"
 alias celar="clear"
-alias vim="mvim -v"
-alias vi="mvim -v"
 alias :q="exit"
 alias phpunit="phpunit --color"
-alias vimperatorrc="vim ~/.vimperatorrc"
+alias mvim="gvim"
+alias yii="php app/yiic"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git django svn virtualenv virtualenvwrapper symfony2 python colorize lein)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source /usr/local/Cellar/z/1.5/etc/profile.d/z.sh
 
 export PATH=/usr/local/share/npm/bin/:$PATH

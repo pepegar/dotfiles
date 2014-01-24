@@ -80,19 +80,14 @@ set t_Co=256
 
 syntax on
 
+set background=dark
+colors molokai
 
 if has("gui_running")
-	set fuoptions=maxvert,maxhorz
 	map <F1> :set invfu<CR>
 	set guioptions-=egt
 	set guioptions=LR
 	set guioptions-=LR
-	set guifont=Inconsolata\ for\ Powerline:h14
-	let g:airline_powerline_fonts = 1
-	colors elrodeo
-else
-	set background=dark
-	colors molokai
 endif
 
 " }}}
@@ -160,15 +155,6 @@ let g:symfony_app_console_path= "app/console"
 " }}}
 " ctrlp-vim ---------------------------------------------------------------- {{{
 let g:ctrlp_show_hidden = 1
-" }}}
-" rainbow parentheses ------------------------------------------------------ {{{
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
 " }}}
 " tabular ------------------------------------------------------------------ {{{
 vnoremap <leader>t :Tabularize
@@ -305,7 +291,7 @@ augroup ft_php
 	au!
 	nnoremap <leader>P :!open http://www.php.net/<cword><cr>
 	au FileType php setlocal foldmethod=syntax
-	au FileType php setlocal noexpandtab
+	au FileType php setlocal expandtab
 	au FileType php setlocal tabstop=4
 	au FileType php setlocal keywordprg=pman
 	au FileType php inoremap <C-o> :set paste<CR>:exe PhpDoc()<CR>:set nopaste<CR>i
@@ -334,6 +320,8 @@ augroup ft_js
 	au!
 	au FileType javascript setlocal foldmethod=marker
 	au Filetype javascript setlocal foldmarker={,}
+	au FileType javascript setlocal expandtab
+	au FileType javascript setlocal tabstop=4
 augroup END
 "}}}
 " PYTHON ------------------------------------------------------------------- {{{
