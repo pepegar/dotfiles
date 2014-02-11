@@ -16,7 +16,6 @@ alias md="mkdir"
 alias celar="clear"
 alias :q="exit"
 alias phpunit="phpunit --color"
-alias mvim="gvim"
 alias yii="php app/yiic"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -27,3 +26,4 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 export PATH=/usr/local/share/npm/bin/:$PATH
+export GOPATH=/usr/local/go

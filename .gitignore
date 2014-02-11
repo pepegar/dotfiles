@@ -4,3 +4,5 @@ generated_completions
 generated_completions/*
 .netrwhist
 vimperator/info/
+vim/bundle/*
+!vim/bundle/neobundle.vim/
