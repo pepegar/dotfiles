@@ -12,7 +12,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/vimproc'
 
-NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'austintaylor/vim-commaobject'
 NeoBundle 'beberlei/vim-php-refactor'
 NeoBundle 'bling/vim-airline'
