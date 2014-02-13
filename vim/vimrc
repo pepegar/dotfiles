@@ -119,7 +119,7 @@ syntax on
 set background=dark
 colors molokai
 
-set guifont=Mensch\ for\ Powerline:h13
+"set guifont=Mensch\ for\ Powerline:h13
 if has("gui_running")
 	map <F1> :set invfu<CR>
 	set guioptions-=egt
@@ -398,6 +398,7 @@ augroup ft_php
 	au FileType php setlocal tabstop=4
 	au FileType php setlocal keywordprg=pman
 	au FileType php inoremap <C-o> :set paste<CR>:exe PhpDoc()<CR>:set nopaste<CR>i
+	au FileType php noremap <F9> :set foldmethod=marker<cr>
 	" Refactors!
 	" Extract variable
 	au FileType php vnoremap <leader>rev di$variable<ESC>O$variable = <ESC>pA;<ESC>
