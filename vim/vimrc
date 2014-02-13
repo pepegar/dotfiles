@@ -393,6 +393,7 @@ inoremap <D-º> \
 augroup ft_php
 	au!
 	nnoremap <leader>P :!open http://www.php.net/<cword><cr>
+	au FileType php nnoremap <c-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 	au FileType php setlocal foldmethod=syntax
 	au FileType php setlocal expandtab
 	au FileType php setlocal tabstop=4
@@ -404,6 +405,7 @@ augroup ft_php
 	au FileType php vnoremap <leader>rev di$variable<ESC>O$variable = <ESC>pA;<ESC>
 	" Extract method
 	au FileType php vnoremap <leader>rem dO$this->newMethod();<ESC>?function<CR>O<ESC>Opublic function newMethod() {}<ESC>ha<CR><ESC>P
+	au FileType php setlocal tags+=~/tags
 augroup END
 
 " }}}
