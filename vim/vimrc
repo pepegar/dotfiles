@@ -83,6 +83,9 @@ set wrap
 "set textwidth=80
 set formatoptions=qrn1
 au VimResized * exe "normal! \<c-w>="
+
+set t_ut=
+
 " }}}
 " Folds -------------------------------------------------------------------- {{{
 set foldlevelstart=99
@@ -127,6 +130,8 @@ if has("gui_running")
 	set guioptions-=LR
 endif
 
+" I'm going to kill matching parens
+hi MatchParen cterm=none ctermbg=none ctermfg=none
 " }}}
 " Backup ------------------------------------------------------------------- {{{
 " backup to ~/.tmp
@@ -197,7 +202,9 @@ let g:ctrlp_show_hidden = 1
 vnoremap <leader>t :Tabularize
 " }}}
 " airline ------------------------------------------------------------------ {{{
-let g:airline_theme='badwolf'
+let g:airline_theme = 'badwolf'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 " }}}
 " neocomplcache ------------------------------------------------------------ {{{
 let g:acp_enableAtStartup = 0
@@ -309,6 +316,12 @@ nmap <c-k> kzz
 
 "}}}
 " editor mappings ---------------------------------------------------------- {{{
+
+" buffer switching
+nnoremap <leader>b :CtrlPBuffer<cr>
+
+"nnoremap % :vsplit<cr>
+"nnoremap " :split<cr>
 
 " Autocompletion
 inoremap <c-space> <c-x><c-o>
