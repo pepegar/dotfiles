@@ -86,9 +86,12 @@ omap <silent> iP :silent normal viP<CR>
 " Generate @uses tag based on inheritance info
 let g:pdv_cfg_Uses = 1
 " Set default Copyright
-let g:pdv_cfg_Copyright = "Copyright (C) 2010 Andrei Zmievski"
+let g:pdv_cfg_Copyright = "Copyright (C) 2014 Pepe García"
+let g:pdv_cfg_Version = "0.1"
+let g:pdv_cfg_Author = "Pepe García <jl.garhdez@gmail.com>"
+let g:pdv_cfg_License = "MIT"
 
-" Exuberant Ctags
+let g:pdv_cfg_ReturnVal = "void"
 "
 " Map <F4> to re-build tags file
 "nmap <silent> <F4>

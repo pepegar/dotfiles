@@ -10,23 +10,26 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'bing/vim-airline'
 NeoBundle 'austintaylor/vim-commaobject'
 NeoBundle 'beberlei/vim-php-refactor'
-NeoBundle 'bling/vim-airline'
+NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'godlygeek/tabular'
+NeoBundle 'gre/play2vim'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'kstep/gitgraph-vim-plugin'
 NeoBundle 'majutsushi/tagbar'
-NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mileszs/ack.vim'
+NeoBundle 'nablaa/vim-rainbow-parenthesis'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'tobyS/pdv'
 NeoBundle 'tpope/vim-classpath'
 NeoBundle 'tpope/vim-fireplace'
 NeoBundle 'tpope/vim-fugitive'
@@ -37,6 +40,7 @@ NeoBundleCheck
 " CONFIGURACIÓN BÁSICA ----------------------------------------------------- {{{
 
 " Basics ------------------------------------------------------------------- {{{
+set t_Co=256
 let mapleader = ","
 set relativenumber
 set number
@@ -68,7 +72,7 @@ set history=1000
 "set undofile
 "set undoreload=10000
 set list
-set listchars=tab:·\ ,eol:¬,extends:❯,precedes:❮
+set listchars=tab:·\ ,extends:❯,precedes:❮
 set shell=/bin/bash
 set lazyredraw
 set matchtime=3
@@ -125,6 +129,20 @@ if has("gui_running")
 	set guioptions-=LR
 endif
 
+function! SL(function)
+  if exists('*'.a:function)
+    return call(a:function,[])
+  else
+    return ''
+  endif
+endfunction
+
+set laststatus=2
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
+
+au InsertEnter * hi StatusLine guibg=green
+au InsertLeave * hi StatusLine guibg=grey
+
 " }}}
 " Backup ------------------------------------------------------------------- {{{
 " backup to ~/.tmp
@@ -153,22 +171,6 @@ function! s:SaveAll()
 endfunction
 
 command! -bar -narg=0 W call s:SaveAll()
-
-if has('statusline')
-	set laststatus=2
-	" Broken down into easily includeable segments
-	set statusline=%<%f\    " Filename
-	set statusline+=%w%h%m%r " Options
-	set statusline+=%{fugitive#statusline()} "  Git Hotness
-	set statusline+=\ [%{&ff}/%Y]            " filetype
-	set statusline+=\ [%{getcwd()}]          " current dir
-	set statusline+=%#warningmsg#
-	set statusline+=%{SyntasticStatuslineFlag()}
-	set statusline+=%*
-	let g:syntastic_enable_signs=1
-	set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-endif
-
 let g:syntastic_phpcs_disable = 0
 let g:syntastic_php_checkers=['php']
 let g:syntastic_css_checkers=['csslint']
@@ -194,9 +196,6 @@ let g:ctrlp_show_hidden = 1
 " tabular ------------------------------------------------------------------ {{{
 vnoremap <leader>t :Tabularize
 " }}}
-" airline ------------------------------------------------------------------ {{{
-let g:airline_theme='badwolf'
-" }}}
 " neocomplcache ------------------------------------------------------------ {{{
 let g:acp_enableAtStartup = 0
 " Use neocomplcache.
@@ -206,7 +205,7 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_disable_auto_complete = 1
 " Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*' 
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
     \ 'default' : '',
@@ -395,7 +394,7 @@ augroup ft_php
 	au FileType php setlocal expandtab
 	au FileType php setlocal tabstop=4
 	au FileType php setlocal keywordprg=pman
-	au FileType php inoremap <C-o> :set paste<CR>:exe PhpDoc()<CR>:set nopaste<CR>i
+	au FileType php nnoremap <leader>pd call PhpDoc()
 	" Refactors!
 	" Extract variable
 	au FileType php vnoremap <leader>rev di$variable<ESC>O$variable = <ESC>pA;<ESC>
@@ -584,6 +583,16 @@ augroup ft_clojure
 	au FileType clojure silent! call TurnOnClojureFolding()
 augroup END
 " }}}
+" SCALA -------------------------------------------------------------------- {{{
+
+augroup ft_scala
+	au!
+	au FileType scala setlocal expandtab
+	au FileType scala setlocal tabstop=2
+	au FileType scala set shiftwidth=2
+	au FileType scala set softtabstop=2
+augroup END
+" }}}
 " TWIG---------------------------------------------------------------------- {{{
 
 augroup ft_twig
@@ -592,8 +601,6 @@ augroup ft_twig
 augroup END
 
 " }}}
-
-
 
 " }}}
 " FUNCTIONS ---------------------------------------------------------------- {{{

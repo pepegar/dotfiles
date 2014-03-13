@@ -118,7 +118,7 @@ snippet doc_h
 	 * @copyright ${4:$2}, `strftime('%d %B, %Y')`
 	 * @package ${5:default}
 	 **/
-	
+
 	/**
 	 * Define DocBlock
 	 *//
@@ -181,7 +181,7 @@ snippet elseif
 snippet t
 	$${1:retVal} = ( ${2:condition} ) ? ${3:a} : ${4:b};${5}
 snippet switch
-	switch ( $${1:variable} ) 
+	switch ( $${1:variable} )
 	{
 		case '${2:value}':
 			${3:// code...}
@@ -204,7 +204,8 @@ snippet foreach
 		${3:// code...}
 	}
 snippet fun
-	${1:public }function ${2:FunctionName}( ${3} ) {
+	${1:public }function ${2:FunctionName}( ${3} )
+	{
 		${4:// code...}
 	}
 # $... = array (...)
@@ -214,6 +215,8 @@ snippet dump
 	echo "<pre>";
 	var_dump(${1});
 	echo "</pre>";
+	die();
 snippet construct
-	public function __construct( ${1} ) {
+	public function __construct( ${1} )
+	{
 	}
