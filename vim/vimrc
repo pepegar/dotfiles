@@ -2,42 +2,7 @@
 " Inspiration: Steve Losh, Scroolose, dkpw, tpope...
 
 " PLUGINS------------------------------------------------------------------- {{{"
-if has ('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-call neobundle#rc(expand('~/.vim/bundle/'))
-
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'austintaylor/vim-commaobject'
-NeoBundle 'beberlei/vim-php-refactor'
-"NeoBundle 'bling/vim-airline'
-NeoBundle 'derekwyatt/vim-scala'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'gre/play2vim'
-NeoBundle 'guns/vim-clojure-static'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'kstep/gitgraph-vim-plugin'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'nablaa/vim-rainbow-parenthesis'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'tobyS/pdv'
-NeoBundle 'tpope/vim-classpath'
-NeoBundle 'tpope/vim-fireplace'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-haml'
-
-NeoBundleCheck
+call pathogen#infect()
 " }}}
 " CONFIGURACIÓN BÁSICA ----------------------------------------------------- {{{
 
@@ -123,12 +88,12 @@ syntax on
 set background=dark
 colors molokai
 
-set guifont=Mensch\ for\ Powerline:h13
 if has("gui_running")
 	map <F1> :set invfu<CR>
 	set guioptions-=egt
 	set guioptions=LR
 	set guioptions-=LR
+	set guifont=Inconsolata\ for\ Powerline\ 12
 endif
 
 function! SL(function)
@@ -139,8 +104,8 @@ function! SL(function)
   endif
 endfunction
 
-set laststatus=2
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
+"set laststatus=2
+"set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
 
 au InsertEnter * hi StatusLine guibg=green
 au InsertLeave * hi StatusLine guibg=grey

@@ -220,3 +220,56 @@ snippet construct
 	public function __construct( ${1} )
 	{
 	}
+snippet d
+	dieh(${1});
+snippet v
+	var_dump(${1});
+snippet vd
+	var_dump(${1});die;
+snippet pvd
+	echo "<pre>";
+	var_dump(${1});
+	echo "</pre>";
+snippet /**
+	/**
+	 *
+	 */
+snippet _
+	__('${1}')
+snippet __
+	<?= __('${1}') ?>
+snippet app
+	Yii::app()
+snippet user
+	Yii::app()->user
+snippet db
+	Yii::app()->db
+snippet findbypk
+	${1:Model}::model()->findByPk(${2:$id});
+snippet findall
+	${1:Model}::model()->findAll(${2:''}, [
+		${3:':key' => $value}
+	]);
+snippet find
+	${1:Model}::model()->find(${2:''}, [
+		${3:':key' => $value}
+	]);
+snippet ifnull
+	if( is_null(${1:$variable}) ) {
+	}
+snippet ifnotnull
+	if( !is_null(${1:$variable}) ) {
+	}
+snippet =>
+	'' => ${1:''},
+snippet try
+	try{
+	} catch(${1:Exception} $e) {
+	}
+snippet while
+	while(${1:true}) {
+	}
+snippet filter
+	array_filter(${1:$variable}, function($item) {return true;});
+snippet map
+	array_map(function($item) {return true;}, ${1:$variable);
