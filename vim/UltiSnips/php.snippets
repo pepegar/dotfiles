@@ -1,0 +1,20 @@
+snippet class "defines a class"
+<?php
+
+namespace ${1:`!v substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\\\', 'g')`};
+
+class ${2:`!v Filename('', 'myClass')`}
+{
+	${3}
+}
+endsnippet
+
+snippet assert "PHPUnit assertion"
+$this->assert${1:Equals}($2, $3);
+endsnippet
+
+snippet fun "Function"
+${1:public }function ${2:name}()
+{
+}
+endsnippet

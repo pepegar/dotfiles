@@ -1,44 +1,10 @@
 "
 " Settings for PHP filetype
 "
-
-" Load PHP Documentor for VIM
-source ~/.vim/plugin/php-doc.vim
-
 " Set up automatic formatting
 set formatoptions+=tcqlro
 
-" Jump to matching bracket for 3/10th of a second (works with showmatch)
-set matchtime=3
-set showmatch
-
-" Set maximum text width (for wrapping)
-set textwidth=80
-
-"
-" Syntax options
-"
-" Enable folding of class/function blocks
-let php_folding = 1
-
-" Do not use short tags to find PHP blocks
-let php_noShortTags = 1
-
-" Highlighti SQL inside PHP strings
-let php_sql_query=1
-
-
-"
-" Linting
-"
-" Use PHP syntax check when doing :make
-set makeprg=php\ -l\ %
-
-" Parse PHP error output
-set errorformat=%m\ in\ %f\ on\ line\ %l
-
-" Function to locate endpoints of a PHP block {{{
-function! PhpBlockSelect(mode)
+function! PhpBlockSelect(mode) " Function to locate endpoints of a PHP block {{{
 	let motion = "v"
 	let line = getline(".")
 	let pos = col(".")-1
@@ -72,39 +38,23 @@ function! PhpBlockSelect(mode)
 endfunction
 " }}}
 
+
+" Jump to matching bracket for 3/10th of a second (works with showmatch)
+set matchtime=3
+set showmatch
+let php_folding = 1
+let php_noShortTags = 1
+
 " Mappings to select full/inner PHP block
 nmap <silent> <expr> vaP PhpBlockSelect(1)
 nmap <silent> <expr> viP PhpBlockSelect(0)
 " Mappings for operator mode to work on full/inner PHP block
 omap <silent> aP :silent normal vaP<CR>
 omap <silent> iP :silent normal viP<CR>
-
-" Mappings for PHP Documentor for VIM
-"inoremap <buffer> <C-P> <Esc>:call PhpDocSingle()<CR>i
-"nnoremap <buffer> <C-P> :call PhpDocSingle()<CR>
-"vnoremap <buffer> <C-P> :call PhpDocRange()<CR>
-" Generate @uses tag based on inheritance info
 let g:pdv_cfg_Uses = 1
 " Set default Copyright
-let g:pdv_cfg_Copyright = "Copyright (C) 2014 Pepe García"
-let g:pdv_cfg_Version = "0.1"
+let g:pdv_cfg_Copyright = "2014 Pepe García"
+let g:pdv_cfg_Version = "Release: 0.1"
 let g:pdv_cfg_Author = "Pepe García <jl.garhdez@gmail.com>"
-let g:pdv_cfg_License = "MIT"
-
+let g:pdv_cfg_License = "MIT http://opensource.org/licenses/MIT"
 let g:pdv_cfg_ReturnVal = "void"
-"
-" Map <F4> to re-build tags file
-"nmap <silent> <F4>
-		"\ :!ctags -f ./tags 
-		"\ --langmap="php:+.inc"
-		"\ -h ".php.inc" -R --totals=yes
-		"\ --tag-relative=yes --PHP-kinds=+cf-v .<CR>
-
-" Set tag filename(s)
-set tags=./tags,tags
-
-" Enable listchars, list to see non-printable symbols
-" set listchars=tab:►·,trail:·,eol:↲
-" set list
-
-" vim: set fdm=marker:

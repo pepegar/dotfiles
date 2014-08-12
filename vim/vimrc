@@ -2,42 +2,7 @@
 " Inspiration: Steve Losh, Scroolose, dkpw, tpope...
 
 " PLUGINS------------------------------------------------------------------- {{{"
-if has ('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-call neobundle#rc(expand('~/.vim/bundle/'))
-
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'austintaylor/vim-commaobject'
-NeoBundle 'beberlei/vim-php-refactor'
-"NeoBundle 'bling/vim-airline'
-NeoBundle 'derekwyatt/vim-scala'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'gre/play2vim'
-NeoBundle 'guns/vim-clojure-static'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'kstep/gitgraph-vim-plugin'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'nablaa/vim-rainbow-parenthesis'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'tobyS/pdv'
-NeoBundle 'tpope/vim-classpath'
-NeoBundle 'tpope/vim-fireplace'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-haml'
-
-NeoBundleCheck
+execute pathogen#infect()
 " }}}
 " CONFIGURACIÓN BÁSICA ----------------------------------------------------- {{{
 
@@ -121,9 +86,9 @@ set t_Co=256
 syntax on
 
 set background=dark
-colors molokai
+colors lucius
 
-set guifont=Mensch\ for\ Powerline:h13
+set guifont=Inconsolata\ for\ Powerline:h14
 if has("gui_running")
 	map <F1> :set invfu<CR>
 	set guioptions-=egt
@@ -174,8 +139,9 @@ endfunction
 
 command! -bar -narg=0 W call s:SaveAll()
 let g:syntastic_phpcs_disable = 0
-let g:syntastic_php_checkers=['php']
+let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_css_checkers=['csslint']
+let g:syntastic_php_phpcs_args = "--standard=PSR2"
 let g:syntastic_javascript_checkers=['jslint']
 
 nnoremap <f6> :Errors<cr>
@@ -198,74 +164,8 @@ let g:ctrlp_show_hidden = 1
 " tabular ------------------------------------------------------------------ {{{
 vnoremap <leader>t :Tabularize
 " }}}
-" neocomplcache ------------------------------------------------------------ {{{
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_disable_auto_complete = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-" Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-\ }
-
-" Define keyword.
-if !exists('g:neocomplcache_keyword_patterns')
-    let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
-
-" For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplcache#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplcache#close_popup() . "\<Down>"
-" Or set this.
-"let g:neocomplcache_enable_cursor_hold_i = 1
-" Or set this.
-"let g:neocomplcache_enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-"let g:neocomplcache_enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplcache_enable_auto_select = 1
-"let g:neocomplcache_disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+" pdv ---------------------------------------------------------------------- {{{
+let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates"
 " }}}
 
 " }}}
@@ -396,12 +296,7 @@ augroup ft_php
 	au FileType php setlocal expandtab
 	au FileType php setlocal tabstop=4
 	au FileType php setlocal keywordprg=pman
-	au FileType php nnoremap <leader>pd call PhpDoc()
-	" Refactors!
-	" Extract variable
-	au FileType php vnoremap <leader>rev di$variable<ESC>O$variable = <ESC>pA;<ESC>
-	" Extract method
-	au FileType php vnoremap <leader>rem dO$this->newMethod();<ESC>?function<CR>O<ESC>Opublic function newMethod() {}<ESC>ha<CR><ESC>P
+	au FileType php nnoremap <leader>p call PhpDocSingle()<CR>
 augroup END
 
 " }}}
@@ -426,6 +321,16 @@ augroup ft_js
 	au FileType javascript setlocal tabstop=4
 augroup END
 "}}}
+" GO ----------------------------------------------------------------------- {{{
+augroup ft_go
+	au!
+    au BufRead,BufNewFile *.go set filetype=go
+	au Filetype go setlocal tabstop=2
+	au Filetype go setlocal shiftwidth=2
+	au Filetype go setlocal expandtab
+	au Filetype go setlocal foldmethod=syntax
+augroup END
+"}}}
 " PYTHON ------------------------------------------------------------------- {{{
 augroup ft_python
 	au!
@@ -439,7 +344,6 @@ augroup END
 " HASKELL ------------------------------------------------------------------ {{{
 augroup ft_haskell
 	au!
-	au bufenter *.hs compiler ghc
 augroup END
 " }}}
 " CSS ---------------------------------------------------------------------- {{{
