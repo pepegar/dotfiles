@@ -94,6 +94,7 @@ if has("gui_running")
 	set guioptions-=egt
 	set guioptions=LR
 	set guioptions-=LR
+	set guifont=Inconsolata\ for\ Powerline\ 12
 endif
 
 function! SL(function)
@@ -104,8 +105,8 @@ function! SL(function)
   endif
 endfunction
 
-set laststatus=2
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
+"set laststatus=2
+"set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
 
 au InsertEnter * hi StatusLine guibg=green
 au InsertLeave * hi StatusLine guibg=grey
