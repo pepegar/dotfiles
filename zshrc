@@ -32,17 +32,10 @@ function gitignore() { curl http://www.gitignore.io/api/$@ ;}
 plugins=(git gitignore)
 
 source $ZSH/oh-my-zsh.sh
-source $(brew --prefix php-version)/php-version.sh && php-version 5
+#source $(brew --prefix php-version)/php-version.sh && php-version 5
 
 export GOPATH=/usr/local/go
 export PATH=/usr/local/share/npm/bin/:/Applications/Postgres93.app/Contents/MacOS/bin:/Users/Pepe/scala/bin/:$GOPATH/bin:/Library/Ruby/Gems/2.0.0/gems/foundation-1.0.4/bin:$PATH
 export TERM=xterm-256color
 export SBT_OPTS="-XX:MaxPermSize=512m"
 export JAVA_OPTS="$JAVA_OPTS -Xmx1024m -XX:MaxPermSize=1024m -Dfile.encoding=UTF8"
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-source /usr/local/bin/virtualenvwrapper_lazy.sh
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
