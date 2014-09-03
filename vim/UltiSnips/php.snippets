@@ -1,7 +1,7 @@
 snippet class "defines a class"
 <?php
 
-namespace ${1:`!v substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\\\', 'g')`};
+namespace ${1:`!v substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\\', 'g')`};
 
 class ${2:`!v Filename('', 'myClass')`}
 {
@@ -17,4 +17,23 @@ snippet fun "Function"
 ${1:public }function ${2:name}()
 {
 }
+endsnippet
+
+snippet v "Description" b
+var_dump($1);
+endsnippet
+
+snippet vd "Description" b
+var_dump($1);
+die;
+endsnippet
+
+snippet test "test" b
+public function test${1:Whatever}()
+{
+}
+endsnippet
+
+snippet d "" b
+dieh($1);
 endsnippet

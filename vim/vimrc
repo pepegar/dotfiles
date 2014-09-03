@@ -8,7 +8,7 @@ execute pathogen#infect()
 
 " Basics ------------------------------------------------------------------- {{{
 set t_Co=256
-let mapleader = ","
+let mapleader = "\<space>"
 set relativenumber
 set number
 nnoremap H 0
@@ -94,7 +94,7 @@ if has("gui_running")
 	set guioptions-=egt
 	set guioptions=LR
 	set guioptions-=LR
-	set guifont=Inconsolata\ for\ Powerline\ 12
+	set guifont=Inconsolata\ for\ Powerline\ 14
 endif
 
 function! SL(function)
@@ -168,13 +168,17 @@ vnoremap <leader>t :Tabularize
 " pdv ---------------------------------------------------------------------- {{{
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates"
 " }}}
+" ultisnips ---------------------------------------------------------------- {{{
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" }}}
 
 " }}}
 " MAPPINGS ----------------------------------------------------------------- {{{
 
 " folding mappings --------------------------------------------------------- {{{
-nnoremap <Space> za
-vnoremap <Space> za
+nnoremap <leader><leader> za
+vnoremap <leader><leader> za
 " }}}
 " movement mappings -------------------------------------------------------- {{{
 
@@ -210,9 +214,6 @@ nmap <c-k> kzz
 "}}}
 " editor mappings ---------------------------------------------------------- {{{
 
-" Autocompletion
-inoremap <c-space> <c-x><c-o>
-
 " desmapeamos la ayuda de VIM del <f1>
 inoremap <F1> <nop>
 " permite ejecutar w!! para guardar ficheros de sólo lectura
@@ -239,6 +240,8 @@ vnoremap > >gv
 
 " Evitamos typos:
 nnoremap ; :
+nnoremap ñ :
+nnoremap Ñ :
 command! W write
 
 " Search highlight toggle
@@ -319,17 +322,7 @@ augroup ft_js
 	au FileType javascript setlocal foldmethod=marker
 	au Filetype javascript setlocal foldmarker={,}
 	au FileType javascript setlocal expandtab
-	au FileType javascript setlocal tabstop=4
-augroup END
-"}}}
-" GO ----------------------------------------------------------------------- {{{
-augroup ft_go
-	au!
-    au BufRead,BufNewFile *.go set filetype=go
-	au Filetype go setlocal tabstop=2
-	au Filetype go setlocal shiftwidth=2
-	au Filetype go setlocal expandtab
-	au Filetype go setlocal foldmethod=syntax
+	au FileType javascript setlocal tabstop=2
 augroup END
 "}}}
 " PYTHON ------------------------------------------------------------------- {{{
