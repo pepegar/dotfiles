@@ -19,11 +19,11 @@ ${1:public }function ${2:name}()
 }
 endsnippet
 
-snippet v "Description" b
+snippet v "var_dump"
 var_dump($1);
 endsnippet
 
-snippet vd "Description" b
+snippet vd "var_dump and die"
 var_dump($1);
 die;
 endsnippet
@@ -34,6 +34,64 @@ public function test${1:Whatever}()
 }
 endsnippet
 
+snippet db ""
+Yii::app()->db$1
+endsnippet
+
+snippet session "" b
+Yii::app()->orderSessionManager$1
+endsnippet
+
+snippet user ""
+Yii::app()->user$1
+endsnippet
+
+snippet app ""
+Yii::app()$1
+endsnippet
+
+snippet find ""
+${1:Model}::model()->find($2);
+endsnippet
+
+snippet findall ""
+${1:Model}::model()->findAll($2);
+endsnippet
+
+snippet if ""
+if ($1) {
+}
+endsnippet
+
+snippet else ""
+else {
+}
+endsnippet
+
 snippet d "" b
 dieh($1);
+endsnippet
+
+snippet try "" b
+try {
+	${1://code}
+} catch (${2:Exception} $e) {
+	echo $e->getMessage();
+}
+endsnippet
+
+snippet php "" b
+<?php
+
+$1
+endsnippet
+
+snippet ifnull "" b
+if (is_null($1)) {
+}
+endsnippet
+
+snippet ifnotnull "" b
+if (!is_null($1)) {
+}
 endsnippet

@@ -18,11 +18,32 @@ alias celar="clear"
 alias :q="exit"
 alias phpunit="phpunit --colors"
 alias yii="php app/yiic"
+alias yii_log="tail -f app/runtime/*.log"
 alias emacs="emacs-24.3"
 alias tmux_init="tmux new -s dev"
 alias pvm="php-version"
 alias symfony="./app/console"
 alias snippets="vim ~/.vim/snippets"
+alias mvim="gvim"
+alias clera="clear"
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+alias gitconfig='vim ~/.gitconfig'
+alias sshconfig='vim ~/.ssh/config'
+alias hosts='sudo vim /etc/hosts'
+
+# virtualenv aliases
+# http://blog.doughellmann.com/2010/01/virtualenvwrapper-tips-and-tricks.html
+alias v='workon'
+alias v.deactivate='deactivate'
+alias v.mk='mkvirtualenv --no-site-packages'
+alias v.mk_withsitepackages='mkvirtualenv'
+alias v.rm='rmvirtualenv'
+alias v.switch='workon'
+alias v.add2virtualenv='add2virtualenv'
+alias v.cdsitepackages='cdsitepackages'
+alias v.cd='cdvirtualenv'
+alias v.lssitepackages='lssitepackages'
 
 function gitignore() { curl http://www.gitignore.io/api/$@ ;}
 
@@ -39,3 +60,7 @@ export PATH=/usr/local/share/npm/bin/:/Applications/Postgres93.app/Contents/MacO
 export TERM=xterm-256color
 export SBT_OPTS="-XX:MaxPermSize=512m"
 export JAVA_OPTS="$JAVA_OPTS -Xmx1024m -XX:MaxPermSize=1024m -Dfile.encoding=UTF8"
+
+# virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
