@@ -28,7 +28,7 @@ var_dump($1);
 die;
 endsnippet
 
-snippet test "test" b
+snippet test "test"
 public function test${1:Whatever}()
 {
 }
@@ -38,7 +38,7 @@ snippet db ""
 Yii::app()->db$1
 endsnippet
 
-snippet session "" b
+snippet session ""
 Yii::app()->orderSessionManager$1
 endsnippet
 
@@ -68,11 +68,11 @@ else {
 }
 endsnippet
 
-snippet d "" b
+snippet d ""
 dieh($1);
 endsnippet
 
-snippet try "" b
+snippet try ""
 try {
 	${1://code}
 } catch (${2:Exception} $e) {
@@ -80,18 +80,22 @@ try {
 }
 endsnippet
 
-snippet php "" b
+snippet php ""
 <?php
 
 $1
 endsnippet
 
-snippet ifnull "" b
+snippet ifnull ""
 if (is_null($1)) {
 }
 endsnippet
 
-snippet ifnotnull "" b
+snippet ifnotnull ""
 if (!is_null($1)) {
 }
+endsnippet
+
+snippet t "this-> :)" i
+$this->$1
 endsnippet
