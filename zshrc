@@ -35,7 +35,7 @@ source $ZSH/oh-my-zsh.sh
 source $(brew --prefix php-version)/php-version.sh && php-version 5
 
 export GOPATH=/usr/local/go
-export PATH=/usr/local/share/npm/bin/:/Applications/Postgres93.app/Contents/MacOS/bin:/Users/Pepe/scala/bin/:$GOPATH/bin:/Library/Ruby/Gems/2.0.0/gems/foundation-1.0.4/bin:$PATH
+export PATH=/usr/local/share/npm/bin/:/Applications/Postgres93.app/Contents/MacOS/bin:/Users/Pepe/scala/bin/:$GOPATH/bin:/Library/Ruby/Gems/2.0.0/gems/foundation-1.0.4/bin:~/.cabal/bin:$PATH
 export TERM=xterm-256color
 export SBT_OPTS="-XX:MaxPermSize=512m"
 export JAVA_OPTS="$JAVA_OPTS -Xmx1024m -XX:MaxPermSize=1024m -Dfile.encoding=UTF8"
