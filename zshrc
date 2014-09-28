@@ -18,11 +18,32 @@ alias celar="clear"
 alias :q="exit"
 alias phpunit="phpunit --colors"
 alias yii="php app/yiic"
+alias yii_log="tail -f app/runtime/*.log"
 alias emacs="emacs-24.3"
 alias tmux_init="tmux new -s dev"
 alias pvm="php-version"
 alias symfony="./app/console"
 alias snippets="vim ~/.vim/snippets"
+alias mvim="gvim"
+alias clera="clear"
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+alias gitconfig='vim ~/.gitconfig'
+alias sshconfig='vim ~/.ssh/config'
+alias hosts='sudo vim /etc/hosts'
+
+# virtualenv aliases
+# http://blog.doughellmann.com/2010/01/virtualenvwrapper-tips-and-tricks.html
+alias v='workon'
+alias v.deactivate='deactivate'
+alias v.mk='mkvirtualenv --no-site-packages'
+alias v.mk_withsitepackages='mkvirtualenv'
+alias v.rm='rmvirtualenv'
+alias v.switch='workon'
+alias v.add2virtualenv='add2virtualenv'
+alias v.cdsitepackages='cdsitepackages'
+alias v.cd='cdvirtualenv'
+alias v.lssitepackages='lssitepackages'
 
 function gitignore() { curl http://www.gitignore.io/api/$@ ;}
 
@@ -32,17 +53,14 @@ function gitignore() { curl http://www.gitignore.io/api/$@ ;}
 plugins=(git gitignore)
 
 source $ZSH/oh-my-zsh.sh
-source $(brew --prefix php-version)/php-version.sh && php-version 5
+#source $(brew --prefix php-version)/php-version.sh && php-version 5
 
 export GOPATH=/usr/local/go
 export PATH=/usr/local/share/npm/bin/:/Applications/Postgres93.app/Contents/MacOS/bin:/Users/Pepe/scala/bin/:$GOPATH/bin:/Library/Ruby/Gems/2.0.0/gems/foundation-1.0.4/bin:~/.cabal/bin:$PATH
 export TERM=xterm-256color
 export SBT_OPTS="-XX:MaxPermSize=512m"
 export JAVA_OPTS="$JAVA_OPTS -Xmx1024m -XX:MaxPermSize=1024m -Dfile.encoding=UTF8"
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-source /usr/local/bin/virtualenvwrapper_lazy.sh
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+# virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh

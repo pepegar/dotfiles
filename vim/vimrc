@@ -49,6 +49,8 @@ set splitright
 set fillchars=diff:⣿,vert:│
 set title
 set wrap
+set incsearch
+set ignorecase
 "set textwidth=80
 set formatoptions=qrn1
 au VimResized * exe "normal! \<c-w>="
@@ -168,8 +170,12 @@ vnoremap <leader>t :Tabularize
 " pdv ---------------------------------------------------------------------- {{{
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates"
 " }}}
+" buffergator -------------------------------------------------------------- {{{
+let g:buffergator_autoexpand_on_split = 0
+" }}}
 " ultisnips ---------------------------------------------------------------- {{{
-let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<tab>"                                            
+let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " }}}
 

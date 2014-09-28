@@ -3,5 +3,6 @@ fish_history
 generated_completions
 generated_completions/*
 .netrwhist
+vim/bundle
 vimperator/info/
 vim/bundle/*
