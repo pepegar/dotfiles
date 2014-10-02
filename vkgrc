@@ -1,6 +1,11 @@
 {
 	"plugins": [
 		{
+			"repository": "https://github.com/whatyouhide/vim-gotham",
+			"name": "vim-gotham",
+			"branch": "master"
+		},
+		{
 			"repository": "https://github.com/pepegar/vkg.vim.git",
 			"name": "vkg.vim",
 			"branch": "master"

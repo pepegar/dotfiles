@@ -88,15 +88,23 @@ set t_Co=256
 syntax on
 
 set background=dark
-colors lucius
+colors gotham
 
-set guifont=Inconsolata\ for\ Powerline:h14
 if has("gui_running")
 	map <F1> :set invfu<CR>
 	set guioptions-=egt
 	set guioptions=LR
 	set guioptions-=LR
-	set guifont=Inconsolata\ for\ Powerline\ 14
+
+	if has("unix")
+		let s:uname = system("uname")
+		if s:uname == "Darwin\n"
+			set guifont=Inconsolata\ for\ Powerline:h18
+		else
+			set guifont=Inconsolata\ for\ Powerline\ 14
+		endif
+	endif
+
 endif
 
 function! SL(function)
