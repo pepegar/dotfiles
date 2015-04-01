@@ -1,0 +1,36 @@
+snippet desc "" b
+describe("$1") {
+  $2
+}
+endsnippet
+
+snippet it "" b
+it("$1") {
+  $2
+}
+endsnippet
+
+snippet specfile "" b
+package ${1:com.yourcompany.whatever} 
+
+import org.junit.runner.RunWith
+import org.scalatest.FunSpec
+import org.scalatest.junit.JUnitRunner
+
+@RunWith(classOf[JUnitRunner])
+class ${2:Class}Spec extends FunSpec{
+}
+endsnippet
+
+snippet doc "" b
+/** ${1:blah blah blah}
+ *
+ * @author pepegar
+ */
+endsnippet
+
+snippet pppr "Description" b
+println()
+println($1)
+println()
+endsnippet
