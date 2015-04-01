@@ -1,6 +1,6 @@
 [user]
-	name = José Luis García
-	email = joseluisgarcia@packlink.es
+	name = Pepe García
+	email = jl.garhdez@gmail.com
 [mergetool]
 	keepBackup = true
 [core]
@@ -14,3 +14,5 @@
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
+[clean]
+	requireForce = false
