@@ -1,10 +1,10 @@
-" Author: José Luis García <jl.garhdez@gmail.com>
+" Author: Pepe García <pepe@garhdez.com>
 " Inspiration: Steve Losh, Scroolose, dkpw, tpope...
 
 " PLUGINS------------------------------------------------------------------- {{{"
 execute pathogen#infect()
 " }}}
-" CONFIGURACIÓN BÁSICA ----------------------------------------------------- {{{
+" BASIC CONFIGURATION ------------------------------------------------------ {{{
 
 " Basics ------------------------------------------------------------------- {{{
 set t_Co=256
@@ -88,9 +88,10 @@ set t_Co=256
 syntax on
 
 set background=dark
-colors gotham
+colors molokai
 
 if has("gui_running")
+	colors gotham
 	map <F1> :set invfu<CR>
 	set guioptions-=egt
 	set guioptions=LR
@@ -99,7 +100,7 @@ if has("gui_running")
 	if has("unix")
 		let s:uname = system("uname")
 		if s:uname == "Darwin\n"
-			set guifont=Inconsolata\ for\ Powerline:h18
+			set guifont=Monaco:h16
 		else
 			set guifont=Inconsolata\ for\ Powerline\ 14
 		endif
@@ -114,9 +115,6 @@ function! SL(function)
     return ''
   endif
 endfunction
-
-"set laststatus=2
-"set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
 
 au InsertEnter * hi StatusLine guibg=green
 au InsertLeave * hi StatusLine guibg=grey
@@ -139,11 +137,11 @@ call pathogen#infect()
 " }}}
 " Nerdtree ----------------------------------------------------------------- {{{
 map <F2> :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.pyc$']
+let NERDTreeIgnore=['\.pyc$', '\.o$', '\.hi$']
 let NERDTreeMapActivateNode='<space>'
 "}}}
 " Syntastic ---------------------------------------------------------------- {{{
-
+let g:syntastic_disabled_filetypes=['java']
 function! s:SaveAll()
 	w | :Error
 endfunction
@@ -154,6 +152,7 @@ let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_css_checkers=['csslint']
 let g:syntastic_php_phpcs_args = "--standard=PSR2"
 let g:syntastic_javascript_checkers=['jslint']
+let g:syntastic_python_checkers=['flake8']
 
 nnoremap <f6> :Errors<cr>
 
@@ -171,6 +170,7 @@ let g:symfony_app_console_path= "app/console"
 " }}}
 " ctrlp-vim ---------------------------------------------------------------- {{{
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_custom_ignore = '\v%(/\.%(git|hg|svn)|\.%(class|o|png|jpg|jpeg|bmp|tar|jar|tgz|deb|zip|xml|html)$|/target/%(quickfix|resolution-cache|streams)|/target/scala-2.10/%(classes|test-classes|sbt-0.13|cache)|/project/target|/project/project|.gradle)'
 " }}}
 " tabular ------------------------------------------------------------------ {{{
 vnoremap <leader>t :Tabularize
@@ -185,6 +185,10 @@ let g:buffergator_autoexpand_on_split = 0
 let g:UltiSnipsExpandTrigger="<tab>"                                            
 let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" }}}
+" Vim2Hs ------------------------------------------------------------------- {{{
+let g:haskell_conceal              = 0
+let g:haskell_conceal_enumerations = 0
 " }}}
 
 " }}}
@@ -352,6 +356,10 @@ augroup END
 " HASKELL ------------------------------------------------------------------ {{{
 augroup ft_haskell
 	au!
+	au Filetype haskell setlocal smartindent
+	au Filetype haskell setlocal tabstop=4
+	au Filetype haskell setlocal shiftwidth=4
+	au Filetype haskell setlocal expandtab
 augroup END
 " }}}
 " CSS ---------------------------------------------------------------------- {{{
@@ -420,6 +428,7 @@ augroup ft_go
 	au FileType go set rtp+=/usr/local/go/misc/vim
 	au FileType go filetype plugin indent on
 augroup END
+let g:go_fmt_command="goimports"
 " }}}
 " MARKDOWN ----------------------------------------------------------------- {{{
 augroup ft_markdown
@@ -430,6 +439,7 @@ augroup ft_markdown
 	" Use <localleader>1/2/3 to add headings.
 	au Filetype markdown nnoremap <buffer> <leader>1 yypVr=:redraw<cr>
 	au Filetype markdown nnoremap <buffer> <leader>2 yypVr-:redraw<cr>
+	au FileType markdown set textwidth=80
 	au Filetype markdown nnoremap <buffer> <leader>3 mzI###<ESC>
 augroup END
 " }}}
@@ -498,7 +508,6 @@ augroup ft_clojure
 augroup END
 " }}}
 " SCALA -------------------------------------------------------------------- {{{
-
 augroup ft_scala
 	au!
 	au FileType scala setlocal expandtab
@@ -512,6 +521,14 @@ augroup END
 augroup ft_twig
 	au!
 	au BufNewFile,BufRead *.twig setlocal filetype=jinja foldlevel=1
+augroup END
+
+" }}}
+" SBT ---------------------------------------------------------------------- {{{
+
+augroup ft_sbt
+	au!
+	au BufNewFile,BufRead *.sbt setlocal filetype=sbt
 augroup END
 
 " }}}
@@ -568,4 +585,26 @@ function! CoffeeGenerate() " {{{
 	call system(shell)
 endfunction "}}}
 
+function! BufSel() " {{{
+  let bufcount = bufnr("$")
+  let currbufnr = 1
+  let firstmatchingbufnr = 0
+  if (bufcount > 0)
+    echo " Select buffer\r\n -------------"
+    while currbufnr <= bufcount
+      if(bufexists(currbufnr) && buflisted(currbufnr))
+        let space = currbufnr > 9 ? "" : " "
+        echo " " . space . currbufnr . " |  ". fnamemodify(bufname(currbufnr), ':t')
+        let firstmatchingbufnr = currbufnr
+      endif
+      let currbufnr = currbufnr + 1
+    endwhile
+    echo "\r\n"
+  endif
+    let desiredbufnr = input("#")
+    if(strlen(desiredbufnr) != 0)
+      execute ":b ". desiredbufnr
+    endif
+endfunction
+nmap <c-o> :call BufSel()<cr> " }}}
 " }}}
