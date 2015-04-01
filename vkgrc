@@ -1,189 +1,199 @@
 {
-	"plugins": [
-		{
-			"repository": "https://github.com/whatyouhide/vim-gotham",
-			"name": "vim-gotham",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/pepegar/vkg.vim.git",
-			"name": "vkg.vim",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/mileszs/ack.vim.git",
-			"name": "ack.vim",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/jeetsukumaran/vim-buffergator",
-			"name": "vim-buffergator",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/nicoraffo/conque.git",
-			"name": "conque.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/vim-scripts/ctrlp.vim",
-			"name": "ctrlp.vim",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/mattn/emmet-vim.git",
-			"name": "emmet-vim.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/kstep/gitgraph-vim-plugin.git",
-			"name": "gitgraph-vim-plugin.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/jonathanfilip/vim-lucius",
-			"name": "vim-lucius",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/scrooloose/nerdcommenter.git",
-			"name": "nerdcommenter.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/scrooloose/nerdtree.git",
-			"name": "nerdtree.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/tobyS/pdv.git",
-			"name": "pdv.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/gre/play2vim.git",
-			"name": "play2vim.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/tpope/vim-surround",
-			"name": "vim-surround",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/scrooloose/syntastic.git",
-			"name": "syntastic.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/godlygeek/tabular.git",
-			"name": "tabular.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/majutsushi/tagbar.git",
-			"name": "tagbar.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/sirver/ultisnips.git",
-			"name": "ultisnips.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/bling/vim-airline.git",
-			"name": "vim-airline.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/tpope/vim-classpath.git",
-			"name": "vim-classpath.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/guns/vim-clojure-static.git",
-			"name": "vim-clojure-static.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/kchmck/vim-coffee-script.git",
-			"name": "vim-coffee-script.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/austintaylor/vim-commaobject.git",
-			"name": "vim-commaobject.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/tpope/vim-fireplace.git",
-			"name": "vim-fireplace.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/tpope/vim-fugitive.git",
-			"name": "vim-fugitive.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/airblade/vim-gitgutter.git",
-			"name": "vim-gitgutter.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/fatih/vim-go.git",
-			"name": "vim-go.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/terryma/vim-multiple-cursors.git",
-			"name": "vim-multiple-cursors.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/beberlei/vim-php-refactor.git",
-			"name": "vim-php-refactor.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/nablaa/vim-rainbow-parenthesis.git",
-			"name": "vim-rainbow-parenthesis.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/derekwyatt/vim-scala.git",
-			"name": "vim-scala.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/honza/vim-snippets",
-			"name": "vim-snippets",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/wavded/vim-stylus",
-			"name": "vim-stylus",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/plasticscafe/vim-stylus-autocompile",
-			"name": "vim-stylus-autocompile",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/Shougo/vimproc.git",
-			"name": "vimproc.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/pepegar/vkg.vim.git",
-			"name": "vkg.vim.git",
-			"branch": "master"
-		},
-		{
-			"repository": "https://github.com/tobyS/vmustache.git",
-			"name": "vmustache.git",
-			"branch": "master"
-		}
-	]
+  "plugins": [
+    {
+      "repository": "https://github.com/mattn/emmet-vim.git",
+      "name": "emmet-vim.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/jeetsukumaran/vim-buffergator",
+      "name": "vim-buffergator",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/mileszs/ack.vim.git",
+      "name": "ack.vim",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/nicoraffo/conque.git",
+      "name": "conque.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/vim-scripts/ctrlp.vim",
+      "name": "ctrlp.vim",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/kstep/gitgraph-vim-plugin.git",
+      "name": "gitgraph-vim-plugin.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/scrooloose/nerdcommenter.git",
+      "name": "nerdcommenter.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/tobyS/pdv.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/honza/vim-snippets",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/tpope/vim-fugitive.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/tpope/vim-surround",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/tpope/vim-classpath.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/plasticscafe/vim-stylus-autocompile",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/scrooloose/nerdtree.git",
+      "name": "vim-surround",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/scrooloose/syntastic.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/godlygeek/tabular.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/majutsushi/tagbar.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/bling/vim-airline.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/nablaa/vim-rainbow-parenthesis.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/guns/vim-clojure-static.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/kchmck/vim-coffee-script.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/austintaylor/vim-commaobject.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/tpope/vim-fireplace.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/airblade/vim-gitgutter.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/fatih/vim-go.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/whatyouhide/vim-gotham",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/jonathanfilip/vim-lucius",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/terryma/vim-multiple-cursors.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/beberlei/vim-php-refactor.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/derekwyatt/vim-scala.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/wavded/vim-stylus",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/Shougo/vimproc.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/pepegar/vkg.vim.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/pepegar/vkg.vim.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/pepegar/vkg.vim.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/tobyS/vmustache.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/gre/play2vim.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/sirver/ultisnips.git",
+      "name": "vmustache.git",
+      "branch": "master"
+    },
+    {
+      "repository": "https://github.com/tobyS/vmustache.git",
+      "name": "vim2hs",
+      "branch": "master"
+    }
+  ]
 }
