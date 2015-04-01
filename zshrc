@@ -5,9 +5,22 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="dpoggi"
+ZSH_THEME="cloud"
+
+pullrequest() {
+  local repo=`git remote -v | grep -m 1 "(push)" | sed -e "s/.*github.com[:/]\(.*\)\.git.*/\1/"`
+  local branch=`git name-rev --name-only HEAD`
+  open https://github.com/$repo/pull/new/$branch
+}
+alias pullrequest=pullrequest
 
 # Example aliases
+alias g="git"
+alias gst="git status -sb"
+alias gc="git commit -v"
+alias gb="git branch"
+alias tmux="TERM=screen-256color-bce tmux"
+alias json_format="python -mjson.tool"
 alias zshrc="vim ~/.zshrc"
 alias tmux.conf="vim ~/.tmux.conf"
 alias zshreload="source ~/.zshrc"
@@ -19,21 +32,17 @@ alias :q="exit"
 alias phpunit="phpunit --colors"
 alias yii="php app/yiic"
 alias yii_log="tail -f app/runtime/*.log"
-alias emacs="emacs-24.3"
 alias tmux_init="tmux new -s dev"
 alias pvm="php-version"
 alias symfony="./app/console"
 alias snippets="vim ~/.vim/snippets"
 alias mvim="gvim"
 alias clera="clear"
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
 alias gitconfig='vim ~/.gitconfig'
 alias sshconfig='vim ~/.ssh/config'
 alias hosts='sudo vim /etc/hosts'
-
-# virtualenv aliases
-# http://blog.doughellmann.com/2010/01/virtualenvwrapper-tips-and-tricks.html
+alias agi='ag -i'
+alias m='mvim'
 alias v='workon'
 alias v.deactivate='deactivate'
 alias v.mk='mkvirtualenv --no-site-packages'
@@ -50,17 +59,24 @@ function gitignore() { curl http://www.gitignore.io/api/$@ ;}
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git gitignore)
+plugins=(gitignore catimg)
 
 source $ZSH/oh-my-zsh.sh
 #source $(brew --prefix php-version)/php-version.sh && php-version 5
 
 export GOPATH=/usr/local/go
-export PATH=/usr/local/share/npm/bin/:/Applications/Postgres93.app/Contents/MacOS/bin:/Users/Pepe/scala/bin/:$GOPATH/bin:/Library/Ruby/Gems/2.0.0/gems/foundation-1.0.4/bin:~/.cabal/bin:$PATH
+export GOBIN=$GOPATH/bin
+export PATH=/usr/local/share/npm/bin/:/Applications/Postgres93.app/Contents/MacOS/bin:/Users/Pepe/scala/bin/:$GOPATH/bin:/Library/Ruby/Gems/2.0.0/gems/foundation-1.0.4/bin:~/.cabal/bin:/usr/local/sbin:/Users/pepe/gradle/bin:/Users/pepe/.local/bin:$PATH
 export TERM=xterm-256color
-export SBT_OPTS="-XX:MaxPermSize=512m"
-export JAVA_OPTS="$JAVA_OPTS -Xmx1024m -XX:MaxPermSize=1024m -Dfile.encoding=UTF8"
+export JAVA_HOME=$(/usr/libexec/java_home)
+export GRADLE_HOME=/Users/pepe/gradle
 
 # virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
+
+# added by travis gem
+[ -f /Users/pepe/.travis/travis.sh ] && source /Users/pepe/.travis/travis.sh
+
+source /Users/pepe/z.sh
+source $(brew --prefix nvm)/nvm.sh
