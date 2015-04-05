@@ -1,12 +1,10 @@
 " Author: Pepe García <pepe@garhdez.com>
 " Inspiration: Steve Losh, Scroolose, dkpw, tpope...
 
-" PLUGINS------------------------------------------------------------------- {{{"
-execute pathogen#infect()
-" }}}
 " BASIC CONFIGURATION ------------------------------------------------------ {{{
 
 " Basics ------------------------------------------------------------------- {{{
+execute pathogen#infect()
 set t_Co=256
 let mapleader = "\<space>"
 set relativenumber
@@ -164,10 +162,6 @@ let g:tagbar_phpctags_bin='~/phpctags/phpctags'
 " Gundo -------------------------------------------------------------------- {{{
 nmap <F5> :GundoToggle<CR>
 " }}}
-" vim-symfony -------------------------------------------------------------- {{{
-let g:symfony_app_console_caller= "php"
-let g:symfony_app_console_path= "app/console"
-" }}}
 " ctrlp-vim ---------------------------------------------------------------- {{{
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = '\v%(/\.%(git|hg|svn)|\.%(class|o|png|jpg|jpeg|bmp|tar|jar|tgz|deb|zip|xml|html)$|/target/%(quickfix|resolution-cache|streams)|/target/scala-2.10/%(classes|test-classes|sbt-0.13|cache)|/project/target|/project/project|.gradle)'
@@ -199,11 +193,6 @@ nnoremap <leader><leader> za
 vnoremap <leader><leader> za
 " }}}
 " movement mappings -------------------------------------------------------- {{{
-
-inoremap ñj <Esc>10ji
-inoremap ñk <Esc>10ki
-noremap ñj 10j
-noremap ñk 10k
 
 map <tab> %
 
@@ -238,7 +227,7 @@ inoremap <F1> <nop>
 cmap w!! w !sudo tee % >/dev/null
 
 inoremap " ""<left>
-inoremap "" ""
+inoremap "" "
 inoremap [ []<left>
 inoremap [[ [
 inoremap [] []
@@ -362,58 +351,11 @@ augroup ft_haskell
 	au Filetype haskell setlocal expandtab
 augroup END
 " }}}
-" CSS ---------------------------------------------------------------------- {{{
-
-" Not mine, from Steve Losh, again
-augroup ft_css
-	au!
-
-	au BufNewFile,BufRead *.less setlocal filetype=less
-
-	au Filetype less,css setlocal foldmethod=marker
-	au Filetype less,css setlocal foldmarker={,}
-	au Filetype less,css setlocal omnifunc=csscomplete#CompleteCSS
-	au Filetype less,css setlocal iskeyword+=-
-
-	" Use <leader>S to sort properties.  Turns this:
-	"
-	"     p {
-	"         width: 200px;
-	"         height: 100px;
-	"         background: red;
-	"
-	"         ...
-	"     }
-	"
-	" into this:
-
-	"     p {
-	"         background: red;
-	"         height: 100px;
-	"         width: 200px;
-	"
-	"         ...
-	"     }
-	au BufNewFile,BufRead *.less,*.css nnoremap <buffer> <localleader>S ?{<CR>jV/\v^\s*\}?$<CR>k:sort<CR>:noh<CR>
-
-	" Make {<cr> insert a pair of brackets in such a way that the cursor is correctly
-	" positioned inside of them AND the following code doesn't get unfolded.
-	au BufNewFile,BufRead *.less,*.css inoremap <buffer> {<cr> {}<left><cr><space><space><space><space>.<cr><esc>kA<bs>
-augroup END
-" }}}
-" VIM ---------------------------------------------------------------------- {{{
-augroup ft_vim
-	au!
-
-augroup END
-" }}}
 " VAGRANT ------------------------------------------------------------------ {{{
-
 augroup ft_vagrant
 	au!
 	au BufRead,BufNewFile Vagrantfile set ft=ruby
 augroup END
-
 " }}}
 " MAN ---------------------------------------------------------------------- {{{
 augroup ft_man
@@ -517,94 +459,23 @@ augroup ft_scala
 augroup END
 " }}}
 " TWIG---------------------------------------------------------------------- {{{
-
 augroup ft_twig
 	au!
 	au BufNewFile,BufRead *.twig setlocal filetype=jinja foldlevel=1
 augroup END
-
 " }}}
 " SBT ---------------------------------------------------------------------- {{{
-
 augroup ft_sbt
 	au!
 	au BufNewFile,BufRead *.sbt setlocal filetype=sbt
 augroup END
-
 " }}}
 
 " }}}
 " FUNCTIONS ---------------------------------------------------------------- {{{
-
-" Only works in PHP... And sometimes
-function! s:CreateGetterSetter() " {{{
-
-	let line = getline(".")
-
-	let getterStart = "()\n{\nreturn $this->"
-	let setterStart = "($nombre)\n{\nthis->"
-
-	let nombreDelMetodo = substitute(substitute(substitute(substitute(substitute(substitute(line, "[\t*]public \\$", "", ""), "[\t*]protected ", "", ""), "[\t*]private ", "", ""), "\\$", "", ""), ";", "", ""), "[=.*]", "", "")
-	let nombreDelMetodo = split(nombreDelMetodo)[0]
-
-	exec "normal! opublic function get_" . nombreDelMetodo . getterStart . nombreDelMetodo . ";\n}\n"
-	exec "normal! opublic function set_" . nombreDelMetodo . setterStart . nombreDelMetodo  . " = $nombre;\n}\n"
-
-endfunction
-
-" Creamos el comando
-command! Gs call s:CreateGetterSetter()
-	"
-" Mapeamos el comando a <leader>gs
-nnoremap <leader>gs :Gs<cr>
-
-" }}}
-
-" From: Jeff Kreeftmeijer
-function! NumberToggle() " {{{
-	if(&relativenumber == 1)
-		set number
-	else
-		set relativenumber
-	endif
-endfunc
-
-nnoremap <C-n> :call NumberToggle()<cr>
-" }}}
-
 function! HighlightAnnotations() " {{{
 	syn keyword phpKeyword contained namespace use
 endfunction
 
 autocmd Syntax * call HighlightAnnotations() " }}}
-
-" This will only work if we are on the root of a dir containing coffee/ and js/
-" subdirectories
-function! CoffeeGenerate() " {{{
-	let shell = "coffee --compile --output js/ coffee/"
-	call system(shell)
-endfunction "}}}
-
-function! BufSel() " {{{
-  let bufcount = bufnr("$")
-  let currbufnr = 1
-  let firstmatchingbufnr = 0
-  if (bufcount > 0)
-    echo " Select buffer\r\n -------------"
-    while currbufnr <= bufcount
-      if(bufexists(currbufnr) && buflisted(currbufnr))
-        let space = currbufnr > 9 ? "" : " "
-        echo " " . space . currbufnr . " |  ". fnamemodify(bufname(currbufnr), ':t')
-        let firstmatchingbufnr = currbufnr
-      endif
-      let currbufnr = currbufnr + 1
-    endwhile
-    echo "\r\n"
-  endif
-    let desiredbufnr = input("#")
-    if(strlen(desiredbufnr) != 0)
-      execute ":b ". desiredbufnr
-    endif
-endfunction
-nmap <c-o> :call BufSel()<cr> " }}}
 " }}}
