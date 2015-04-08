@@ -196,7 +196,7 @@ vnoremap <leader><leader> za
 
 map <tab> %
 
-nnoremap D 0d$
+nnoremap D d$
 
 nnoremap n nzzzv
 nnoremap N Nzzzv
