@@ -81,15 +81,14 @@ set nowrap
 " Appearance --------------------------------------------------------------- {{{
 
 set wildmenu
-set t_Co=256
 
 syntax on
 
-set background=dark
+set background=light
 colors molokai
 
 if has("gui_running")
-	colors gotham
+	colors solarized
 	map <F1> :set invfu<CR>
 	set guioptions-=egt
 	set guioptions=LR
@@ -103,7 +102,8 @@ if has("gui_running")
 			set guifont=Inconsolata\ for\ Powerline\ 14
 		endif
 	endif
-
+else
+	set term=screen-256color
 endif
 
 function! SL(function)
@@ -147,6 +147,7 @@ endfunction
 command! -bar -narg=0 W call s:SaveAll()
 let g:syntastic_phpcs_disable = 0
 let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_java_checkers=[]
 let g:syntastic_css_checkers=['csslint']
 let g:syntastic_php_phpcs_args = "--standard=PSR2"
 let g:syntastic_javascript_checkers=['jslint']
@@ -164,7 +165,7 @@ nmap <F5> :GundoToggle<CR>
 " }}}
 " ctrlp-vim ---------------------------------------------------------------- {{{
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_custom_ignore = '\v%(/\.%(git|hg|svn)|\.%(class|o|png|jpg|jpeg|bmp|tar|jar|tgz|deb|zip|xml|html)$|/target/%(quickfix|resolution-cache|streams)|/target/scala-2.10/%(classes|test-classes|sbt-0.13|cache)|/project/target|/project/project|.gradle)'
+let g:ctrlp_custom_ignore = '\v%(/\.%(git|hg|svn)|\.%(csv|json|class|o|png|jpg|jpeg|bmp|tar|jar|tgz|deb|zip|xml|html)$|/target/%(quickfix|resolution-cache|streams)|/target/scala-2.10/%(classes|test-classes|sbt-0.13|cache)|/project/target|/project/project|.gradle|.ensime)'
 " }}}
 " tabular ------------------------------------------------------------------ {{{
 vnoremap <leader>t :Tabularize
@@ -332,6 +333,16 @@ augroup ft_js
 	au FileType javascript setlocal tabstop=2
 augroup END
 "}}}
+" JAVA --------------------------------------------------------------------- {{{
+augroup ft_java
+	au!
+	au Filetype java setlocal smartindent
+	au Filetype java setlocal tabstop=4
+	au Filetype java setlocal shiftwidth=4
+	au Filetype java setlocal expandtab
+	au Filetype java setlocal foldmethod=syntax
+augroup END
+" }}}
 " PYTHON ------------------------------------------------------------------- {{{
 augroup ft_python
 	au!

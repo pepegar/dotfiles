@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
+TERM=screen-256color
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -56,10 +57,14 @@ alias v.lssitepackages='lssitepackages'
 
 function gitignore() { curl http://www.gitignore.io/api/$@ ;}
 
+function csv() {
+	cat $1 | sed -e 's/,,/, ,/g' | column -s, -t
+}
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(gitignore catimg)
+plugins=(gitignore catimg vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 #source $(brew --prefix php-version)/php-version.sh && php-version 5
@@ -69,6 +74,7 @@ export GOBIN=$GOPATH/bin
 export PATH=/usr/local/share/npm/bin/:/Applications/Postgres93.app/Contents/MacOS/bin:/Users/Pepe/scala/bin/:$GOPATH/bin:/Library/Ruby/Gems/2.0.0/gems/foundation-1.0.4/bin:~/.cabal/bin:/usr/local/sbin:/Users/pepe/gradle/bin:/Users/pepe/.local/bin:$PATH
 export TERM=xterm-256color
 export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_OPTS="-Xms512m -Xmx512m "
 export GRADLE_HOME=/Users/pepe/gradle
 
 # virtualenv
@@ -80,3 +86,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 source /Users/pepe/z.sh
 source $(brew --prefix nvm)/nvm.sh
+
+export OS_AUTH_URL=https://lon.identity.api.rackspacecloud.com/v2.0/
+export OS_USERNAME=packlink.docker
+export OS_PASSWORD=Packlink.!2015

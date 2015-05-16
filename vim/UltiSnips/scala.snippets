@@ -13,12 +13,9 @@ endsnippet
 snippet specfile "" b
 package ${1:com.yourcompany.whatever} 
 
-import org.junit.runner.RunWith
-import org.scalatest.FunSpec
-import org.scalatest.junit.JUnitRunner
+import org.scalatest._
 
-@RunWith(classOf[JUnitRunner])
-class ${2:Class}Spec extends FunSpec{
+class ${2:Class}Spec extends FunSpec {
 }
 endsnippet
 
@@ -33,4 +30,18 @@ snippet pppr "Description" b
 println()
 println($1)
 println()
+endsnippet
+
+snippet ass "assert" b
+assert(${1:false})
+endsnippet
+
+snippet typeclass "typeclass" b
+trait ${1:TypeClass}[T] {
+  def ${2:action}[T]: T
+}
+endsnippet
+
+snippet cclass "case class" b
+case class ${1:WhatEver}
 endsnippet
