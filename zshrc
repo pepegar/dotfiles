@@ -7,8 +7,10 @@ TERM=screen-256color
 ZSH_THEME="cloud"
 
 commit-dotfiles() {
+  local path=`pwd`
   cd ~/dotfiles
   git add . && git commit -m "$1" && git push origin master
+  cd $path
 }
 
 pullrequest() {
