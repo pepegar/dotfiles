@@ -6,6 +6,7 @@
 " Basics ------------------------------------------------------------------- {{{
 execute pathogen#infect()
 set t_Co=256
+set conceallevel=0
 let mapleader = "\<space>"
 set relativenumber
 set number
@@ -56,6 +57,7 @@ au VimResized * exe "normal! \<c-w>="
 " Folds -------------------------------------------------------------------- {{{
 set foldlevelstart=99
 set foldmethod=marker
+let hscoptions="℘q𝐒𝐓𝐄𝐌"
 
 " From Steve Losh's
 function! MyFoldText() " {{{
@@ -88,7 +90,6 @@ set background=light
 colors molokai
 
 if has("gui_running")
-	colors solarized
 	map <F1> :set invfu<CR>
 	set guioptions-=egt
 	set guioptions=LR

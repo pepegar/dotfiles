@@ -16,17 +16,20 @@ pullrequest() {
 alias pullrequest=pullrequest
 
 # Example aliases
+alias spacemacs="emacs ~/.spacemacs"
+alias vim="echo \"use emacs, n00b!\""
+alias mvim="echo \"use emacs, n00b!\""
 alias g="git"
 alias gst="git status -sb"
 alias gc="git commit -v"
 alias gb="git branch"
 alias tmux="TERM=screen-256color-bce tmux"
 alias json_format="python -mjson.tool"
-alias zshrc="vim ~/.zshrc"
-alias tmux.conf="vim ~/.tmux.conf"
+alias zshrc="emacs ~/.zshrc"
+alias tmux.conf="emacs ~/.tmux.conf"
 alias zshreload="source ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
-alias vimrc="vim ~/.vimrc"
+alias ohmyzsh="emacs ~/.oh-my-zsh"
+alias vimrc="emacs ~/.vimrc"
 alias md="mkdir"
 alias celar="clear"
 alias :q="exit"
@@ -36,12 +39,12 @@ alias yii_log="tail -f app/runtime/*.log"
 alias tmux_init="tmux new -s dev"
 alias pvm="php-version"
 alias symfony="./app/console"
-alias snippets="vim ~/.vim/snippets"
+alias snippets="emacs ~/.emacs/snippets"
 alias mvim="gvim"
 alias clera="clear"
-alias gitconfig='vim ~/.gitconfig'
-alias sshconfig='vim ~/.ssh/config'
-alias hosts='sudo vim /etc/hosts'
+alias gitconfig='emacs ~/.gitconfig'
+alias sshconfig='emacs ~/.ssh/config'
+alias hosts='sudo emacs /etc/hosts'
 alias agi='ag -i'
 alias m='mvim'
 alias v='workon'
@@ -64,7 +67,7 @@ function csv() {
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(gitignore catimg vi-mode)
+plugins=(gitignore catimg)
 
 source $ZSH/oh-my-zsh.sh
 #source $(brew --prefix php-version)/php-version.sh && php-version 5
