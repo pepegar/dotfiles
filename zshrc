@@ -3,10 +3,13 @@ ZSH=$HOME/.oh-my-zsh
 TERM=screen-256color
 
 # Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+
 ZSH_THEME="cloud"
+
+commit-dotfiles() {
+  cd ~/dotfiles
+  git commit -am "$1" && git push origin master
+}
 
 pullrequest() {
   local repo=`git remote -v | grep -m 1 "(push)" | sed -e "s/.*github.com[:/]\(.*\)\.git.*/\1/"`
