@@ -9,6 +9,7 @@ ZSH_THEME="cloud"
 commit-dotfiles() {
   cd ~/dotfiles
   git commit -am "$1" && git push origin master
+  cd -
 }
 
 pullrequest() {
