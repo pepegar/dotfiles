@@ -97,7 +97,7 @@ values."
    dotspacemacs-startup-recent-list-size 5
    ;; Default major mode of the scratch buffer (default `text-mode')
    dotspacemacs-scratch-mode 'text-mode
-   ;; List of themes, the first of the list is loaded when spacemacs starts.
+   ;; List of themes , the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(spacemacs-dark
@@ -250,7 +250,7 @@ in `dotspacemacs/user-config'."
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
-  dotspacemacs-default-theme 'material
+  dotspacemacs-default-theme 'monokai
   
   (setq create-lockfiles nil)
   (when (eq system-type 'darwin) ;; mac specific settings
