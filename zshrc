@@ -77,7 +77,7 @@ source $ZSH/oh-my-zsh.sh
 
 export GOPATH=/usr/local/go
 export GOBIN=$GOPATH/bin
-export PATH=/usr/local/share/npm/bin/:/Applications/Postgres93.app/Contents/MacOS/bin:/Users/Pepe/scala/bin/:$GOPATH/bin:/Library/Ruby/Gems/2.0.0/gems/foundation-1.0.4/bin:~/.cabal/bin:/usr/local/sbin:/Users/pepe/gradle/bin:/Users/pepe/.local/bin:$PATH
+export PATH=/usr/local/share/npm/bin/:/Applications/Postgres93.app/Contents/MacOS/bin:/Users/Pepe/scala/bin/:$GOPATH/bin:/Library/Ruby/Gems/2.0.0/gems/foundation-1.0.4/bin:~/.cabal/bin:/usr/local/sbin:/Users/pepe/gradle/bin:/Users/pepe/.local/bin:~/powerline/scripts:$PATH
 export TERM=xterm-256color
 export JAVA_HOME=$(/usr/libexec/java_home)
 export JAVA_OPTS="-Xms512m -Xmx512m "
