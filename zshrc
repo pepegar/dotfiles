@@ -7,10 +7,8 @@ TERM=screen-256color
 ZSH_THEME="cloud"
 
 commit-dotfiles() {
-  local path=`pwd`
   cd ~/dotfiles
   git add . && git commit -m "$1" && git push origin master
-  cd $path
 }
 
 pullrequest() {
@@ -91,9 +89,6 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 # added by travis gem
 [ -f /Users/pepe/.travis/travis.sh ] && source /Users/pepe/.travis/travis.sh
-
-source /Users/pepe/z.sh
-source $(brew --prefix nvm)/nvm.sh
 
 export OS_AUTH_URL=https://lon.identity.api.rackspacecloud.com/v2.0/
 export OS_USERNAME=packlink.docker
