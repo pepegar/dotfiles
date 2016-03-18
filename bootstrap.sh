@@ -16,4 +16,5 @@ ln -s ~/dotfiles/zshrc ~/.zshrc
 ln -s ~/dotfiles/sqliterc ~/.sqliterc
 ln -s ~/dotfiles/vkgrc ~/.vkgrc
 ln -s ~/dotfiles/.spacemacs ~/.spacemacs
+ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 echo "-------- done! ---------"
