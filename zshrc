@@ -11,6 +11,11 @@ commit-dotfiles() {
   git add . && git commit -m "$1" && git push origin master
 }
 
+update-dotfiles() {
+  cd ~/dotfiles
+  git pull origin master
+}
+
 pullrequest() {
   local repo=`git remote -v | grep -m 1 "(push)" | sed -e "s/.*github.com[:/]\(.*\)\.git.*/\1/"`
   local branch=`git name-rev --name-only HEAD`
@@ -20,7 +25,6 @@ alias pullrequest=pullrequest
 
 # Example aliases
 alias spacemacs="emacs ~/.spacemacs"
-alias vim="echo \"use emacs, n00b!\""
 alias mvim="echo \"use emacs, n00b!\""
 alias g="git"
 alias gst="git status -sb"

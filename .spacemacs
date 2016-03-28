@@ -2,6 +2,16 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+;; Switching windows
+(global-set-key [S-left] 'windmove-left)
+(global-set-key [S-right] 'windmove-right)
+(global-set-key [S-up] 'windmove-up)
+(global-set-key [S-down] 'windmove-down)
+
+
+;; Display line numbers
+(global-linum-mode 1)
+
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
@@ -33,7 +43,8 @@ values."
      php
      scala
      javascript
-     ;; org
+     org
+     yaml
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -249,15 +260,7 @@ in `dotspacemacs/user-config'."
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
-
-  dotspacemacs-default-theme 'monokai
-  
   (setq create-lockfiles nil)
-  (when (eq system-type 'darwin) ;; mac specific settings
-    (setq mac-option-modifier 'meta)
-    (setq mac-command-modifier 'meta)
-    (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
-      )
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
