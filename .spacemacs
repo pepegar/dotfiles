@@ -12,6 +12,13 @@
 ;; Display line numbers
 (global-linum-mode 1)
 
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
+(setq-default dotspacemacs-configuration-layers '(
+  (scala :variables scala-enable-eldoc-mode t)))
+
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
@@ -261,6 +268,9 @@ in `dotspacemacs/user-config'."
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   (setq create-lockfiles nil)
+
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+  (add-to-list 'exec-path "~/.local/bin/")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
