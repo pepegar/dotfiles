@@ -4,7 +4,7 @@ TERM=screen-256color
 
 # Set name of the theme to load.
 
-ZSH_THEME="cloud"
+ZSH_THEME="mh"
 
 commit-dotfiles() {
   cd ~/dotfiles
@@ -88,8 +88,8 @@ export JAVA_OPTS="-Xms512m -Xmx512m "
 export GRADLE_HOME=/Users/pepe/gradle
 
 # virtualenv
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+# export WORKON_HOME=$HOME/.virtualenvs
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # added by travis gem
 [ -f /Users/pepe/.travis/travis.sh ] && source /Users/pepe/.travis/travis.sh
