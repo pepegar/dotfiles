@@ -3,11 +3,10 @@
 ;; It must be stored in your home directory.
 
 ;; Switching windows
-(global-set-key [S-left] 'windmove-left)
-(global-set-key [S-right] 'windmove-right)
-(global-set-key [S-up] 'windmove-up)
-(global-set-key [S-down] 'windmove-down)
+(windmove-default-keybindings)
 
+;; no wrap lines by default
+(set-default 'truncate-lines t)
 
 ;; Display line numbers
 (global-linum-mode 1)
@@ -18,6 +17,8 @@
 (setq mac-option-modifier nil)
 (setq-default dotspacemacs-configuration-layers '(
   (scala :variables scala-enable-eldoc-mode t)))
+(setq eclim-eclipse-dirs "/Applications/Eclipse.app/Contents/Eclipse"
+      eclim-executable "/Applications/Eclipse.app/Contents/Eclipse/eclim")
 
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
@@ -48,7 +49,9 @@ values."
      haskell
      python
      php
+     elm
      scala
+     java
      javascript
      org
      yaml
@@ -59,6 +62,7 @@ values."
      syntax-checking
      version-control
      themes-megapack
+     dash
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
