@@ -18,8 +18,6 @@ filetype plugin indent on
 set mouse=a
 set comments=sr:/*,mb:*,ex:*/
 set smartindent
-set encoding=utf-8
-set cursorline
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
@@ -87,22 +85,15 @@ set wildmenu
 syntax on
 
 set background=light
-colors molokai
+colors github
 
 if has("gui_running")
 	map <F1> :set invfu<CR>
 	set guioptions-=egt
 	set guioptions=LR
 	set guioptions-=LR
-
-	if has("unix")
-		let s:uname = system("uname")
-		if s:uname == "Darwin\n"
-			set guifont=Monaco:h16
-		else
-			set guifont=Inconsolata\ for\ Powerline\ 14
-		endif
-	endif
+	set anti enc=utf-8
+	set guifont=Source\ Code\ Pro:h15
 else
 	set term=screen-256color
 endif
@@ -479,7 +470,7 @@ augroup END
 " SBT ---------------------------------------------------------------------- {{{
 augroup ft_sbt
 	au!
-	au BufNewFile,BufRead *.sbt setlocal filetype=sbt
+	au BufNewFile,BufRead *.sbt setlocal filetype=scala
 augroup END
 " }}}
 

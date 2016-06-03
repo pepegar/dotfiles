@@ -8,7 +8,7 @@ commit-dotfiles() {
   git add . && git commit -m "$1" && git push origin master
 }
 
-alias spacemacs="emacs ~/.spacemacs"
+alias spacemacs="vim ~/.spacemacs"
 alias g="git"
 alias gst="git status -sb"
 alias gc="git commit -v"
@@ -16,18 +16,18 @@ alias gb="git branch"
 alias tmux="TERM=screen-256color-bce tmux"
 alias json_format="python -mjson.tool"
 alias zshrc="vim ~/.zshrc"
-alias tmux.conf="emacs ~/.tmux.conf"
+alias tmux.conf="vim ~/.tmux.conf"
 alias zshreload="source ~/.zshrc"
-alias ohmyzsh="emacs ~/.oh-my-zsh"
-alias vimrc="emacs ~/.vimrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+alias vimrc="vim ~/.vimrc"
 alias md="mkdir"
 alias celar="clear"
 alias :q="exit"
 alias tmux_init="tmux new -s dev"
 alias clera="clear"
-alias gitconfig='emacs ~/.gitconfig'
-alias sshconfig='emacs ~/.ssh/config'
-alias hosts='sudo emacs /etc/hosts'
+alias gitconfig='vim ~/.gitconfig'
+alias sshconfig='vim ~/.ssh/config'
+alias hosts='sudo vim /etc/hosts'
 alias agi='ag -i'
 alias m='mvim'
 alias v='workon'
