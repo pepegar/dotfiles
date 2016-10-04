@@ -4,9 +4,9 @@
 " BASIC CONFIGURATION ------------------------------------------------------ {{{
 
 " Basics ------------------------------------------------------------------- {{{
+let g:airline_powerline_fonts = 1
 execute pathogen#infect()
 set t_Co=256
-set conceallevel=0
 let mapleader = "\<space>"
 set relativenumber
 set number
@@ -84,7 +84,6 @@ set wildmenu
 
 syntax on
 
-set background=light
 colors github
 
 if has("gui_running")
@@ -93,7 +92,8 @@ if has("gui_running")
 	set guioptions=LR
 	set guioptions-=LR
 	set anti enc=utf-8
-	set guifont=Source\ Code\ Pro:h15
+	set macligatures
+	set guifont=Fira\ Code:h15
 else
 	set term=screen-256color
 endif
@@ -157,7 +157,7 @@ nmap <F5> :GundoToggle<CR>
 " }}}
 " ctrlp-vim ---------------------------------------------------------------- {{{
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_custom_ignore = '\v%(/\.%(git|hg|svn)|\.%(csv|json|class|o|png|jpg|jpeg|bmp|tar|jar|tgz|deb|zip|xml|html)$|/target/%(quickfix|resolution-cache|streams)|/target/scala-2.10/%(classes|test-classes|sbt-0.13|cache)|/project/target|/project/project|.gradle|.ensime)'
+let g:ctrlp_custom_ignore = '\v%(/\.%(git|hg|svn)|\.%(csv|json|class|o|png|jpg|jpeg|bmp|tar|jar|tgz|deb|zip|xml|html)$|/target/%(quickfix|resolution-cache|streams)|/target/scala-2.10/%(classes|test-classes|sbt-0.13|cache)|/project/target|/project/project|.gradle|.ensime|.stack-work)'
 " }}}
 " tabular ------------------------------------------------------------------ {{{
 vnoremap <leader>t :Tabularize
@@ -465,12 +465,6 @@ augroup END
 augroup ft_twig
 	au!
 	au BufNewFile,BufRead *.twig setlocal filetype=jinja foldlevel=1
-augroup END
-" }}}
-" SBT ---------------------------------------------------------------------- {{{
-augroup ft_sbt
-	au!
-	au BufNewFile,BufRead *.sbt setlocal filetype=scala
 augroup END
 " }}}
 

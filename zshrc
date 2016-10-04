@@ -8,8 +8,11 @@ commit-dotfiles() {
   git add . && git commit -m "$1" && git push origin master
 }
 
+alias sbt="./sbt"
 alias spacemacs="vim ~/.spacemacs"
 alias g="git"
+alias emacsapp="/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs \"$@\""
+alias emacs="emacs -nw"
 alias gst="git status -sb"
 alias gc="git commit -v"
 alias gb="git branch"
@@ -50,6 +53,8 @@ function csv() {
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(gitignore catimg)
 
+source $(brew --prefix)/etc/profile.d/z.sh
+
 source $ZSH/oh-my-zsh.sh
 export GOPATH=/usr/local/go
 export GOBIN=$GOPATH/bin
@@ -57,10 +62,17 @@ export PATH=/usr/local/share/npm/bin/:/Applications/Postgres93.app/Contents/MacO
 export PATH=/Users/pepe/java_home/apache-ant-1.9.7/bin:$PATH
 export PATH=/Users/pepe/.conscript/bin:$PATH
 export PATH=$JC_HOME/bin:$PATH
+export PATH="$HOME/.cask/bin:$PATH"
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export TERM=xterm-256color
 export ANDROID_HOME=/usr/local/opt/android-sdk
-
+export SBT_OPTS="-Xmx2G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=2G -Xss2M  -Duser.timezone=GMT -Xno-patmat-analysis"
 
 # java stuff
 export JAVA_HOME=$(/usr/libexec/java_home)
 export JC_HOME=~/java_home/java_card_kit-2_2_2
+
+# added by travis gem
+[ -f /Users/pepe/.travis/travis.sh ] && source /Users/pepe/.travis/travis.sh
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"

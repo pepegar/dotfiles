@@ -19,13 +19,6 @@ class ${2:Class}Spec extends FunSpec {
 }
 endsnippet
 
-snippet doc "" b
-/** ${1:blah blah blah}
- *
- * @author pepegar
- */
-endsnippet
-
 snippet pppr "Description" b
 println()
 println($1)
@@ -36,12 +29,26 @@ snippet ass "assert" b
 assert(${1:false})
 endsnippet
 
-snippet typeclass "typeclass" b
-trait ${1:TypeClass}[T] {
-  def ${2:action}[T]: T
+snippet cclass "case class" b
+case class ${1:WhatEver}
+endsnippet
+
+snippet flatspec "flat spec" b
+import org.scalatest._
+
+class ${2:Class}Spec extends FlatSpec with Matchers {
 }
 endsnippet
 
-snippet cclass "case class" b
-case class ${1:WhatEver}
+snippet apduspec "Zaphod's ApduSpec" b
+import com.fidesmo.apdu._
+
+class ${2:Class}Spec extends ApduSpec {
+}
+endsnippet
+
+snippet for "" b
+for {
+  $2 <- $1
+} yield $3
 endsnippet
