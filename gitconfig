@@ -1,5 +1,5 @@
 [user]
-	name = Pepe García
+	name = pepegar
 	email = jl.garhdez@gmail.com
 [mergetool]
 	keepBackup = true
@@ -24,3 +24,5 @@
 [github]
 	user = pepegar
 	token = 10fa7a55c2875e4b2a9fa547b46efd68a1644bda
+[push]
+	default = simple

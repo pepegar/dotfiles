@@ -8,11 +8,9 @@ commit-dotfiles() {
   git add . && git commit -m "$1" && git push origin master
 }
 
-alias sbt="./sbt"
+alias openssl="/usr/local/Cellar/openssl/1.0.2g/bin/openssl"
 alias spacemacs="vim ~/.spacemacs"
 alias g="git"
-alias emacsapp="/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs \"$@\""
-alias emacs="emacs -nw"
 alias gst="git status -sb"
 alias gc="git commit -v"
 alias gb="git branch"
@@ -51,7 +49,7 @@ function csv() {
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(gitignore catimg)
+plugins=(gitignore catimg ssh-agent)
 
 source $(brew --prefix)/etc/profile.d/z.sh
 
@@ -66,13 +64,18 @@ export PATH="$HOME/.cask/bin:$PATH"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export TERM=xterm-256color
 export ANDROID_HOME=/usr/local/opt/android-sdk
-export SBT_OPTS="-Xmx2G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=2G -Xss2M  -Duser.timezone=GMT -Xno-patmat-analysis"
+export SBT_OPTS="-Xmx2G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=2G -Xss2M  -Duser.timezone=GMT"
+export WORKON_HOME=~/.envs
+
+source /usr/local/bin/virtualenvwrapper.sh
 
 # java stuff
 export JAVA_HOME=$(/usr/libexec/java_home)
-export JC_HOME=~/java_home/java_card_kit-2_2_2
+export JC_HOME=/Users/pepe/java_home/oracle_javacard_sdks/jc304_kit
 
 # added by travis gem
 [ -f /Users/pepe/.travis/travis.sh ] && source /Users/pepe/.travis/travis.sh
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+
+. /Users/pepe/.nix-profile/etc/profile.d/nix.sh
