@@ -1,0 +1,5 @@
+hsetroot -center .wallpaper
+
+compton -f &
+
+conky &
