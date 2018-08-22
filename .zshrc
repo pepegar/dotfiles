@@ -94,3 +94,5 @@ source /home/pepe/.nix-profile/etc/profile.d/nix.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export PATH=:/home/pepe/.local/bin:$PATH
