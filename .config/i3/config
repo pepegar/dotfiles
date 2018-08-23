@@ -10,6 +10,7 @@ set $green #38fc48
 set $pink #fa00ab
 set $blue #0de0fc
 set $purple #f938fc
+set $borderPixels 5
 
 font pango: Fantasque Sans Mono 14
 
@@ -158,13 +159,6 @@ mode "$mode_system" {
 
 bindsym $mod+Shift+e mode "$mode_system"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-#        status_command i3status
-         status_command $HOME/.config/i3/status
-}
-
 # ----------------------- Eye candy ----------------------------
 # window colors
 #                       border, background, text, indicator
@@ -173,12 +167,16 @@ client.unfocused        $black $black $black $yellow
 client.focused_inactive $black $black $black $yellow
 client.urgent           $red  $red  $white $yellow
 
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel $borderPixels
 hide_edge_borders both
+
+bindsym $mod+Shift+m exec --no-startup-id xrandr --output eDP-1 --off --output DP-3 --primary --mode 3440x1440 --rate 30
+bindsym $mod+m exec --no-startup-id xrandr --output eDP-1 --primary --output DP-3 --off
 
 gaps inner 10
 gaps outer 5
 smart_borders on
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 bindsym $mod+t border normal
 bindsym $mod+y border pixel 2
