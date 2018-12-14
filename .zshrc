@@ -92,7 +92,11 @@ source /home/pepe/.nix-profile/etc/profile.d/nix.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias cat='bat'
+alias ping='prettyping --nolegend'
 
-export PATH=:/home/pepe/.local/bin:$PATH
+export PATH=:/home/pepe/.local/bin:/home/pepe/.conscript/bin:$PATH
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+(/bin/cat ~/.cache/wal/sequences &)

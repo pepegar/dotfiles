@@ -7,7 +7,7 @@ URxvt*depth: 32
 URxvt.borderless: true
 URxvt*dynamicColors: on
 URxvt.geometry: 90x20
-URxvt.internalBorder: 30
+URxvt.internalBorder: 20
 URxvt.lineSpace: 1
 URxvt.saveLines: 20000
 URxvt*termName: xterm-256color
@@ -52,8 +52,8 @@ URxvt.keysym.Control-0x2d: perl:font-size:decrease
 
 
 !! Fonts
-URxvt.font: xft:Fantasque Sans Mono:size=18,xft:Symbola,xft:EmojiOne Color,xft:Noto Color Emoji
-URxvt*boldFont: xft:Fantasque Sans Mono:size=18,xft:Symbola,xft:EmojiOne Color,xft:Noto Color Emoji
+URxvt.font: xft:Monoisome:size=14,xft:Symbola,xft:EmojiOne Color,xft:Noto Color Emoji
+URxvt*boldFont: xft:Monoisome:size=14,xft:Symbola,xft:EmojiOne Color,xft:Noto Color Emoji
 URxvt.allow_bold:           true
 URxvt*boldMode:             true
 ! Fix font space
